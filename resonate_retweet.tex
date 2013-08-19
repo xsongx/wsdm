@@ -1,0 +1,502 @@
+\documentclass{acm_proc_article-sp}
+\usepackage{times}
+\usepackage{url}
+\usepackage{changepage}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{graphicx}
+\usepackage{CJKutf8}
+\usepackage{mdwlist}
+\usepackage{indentfirst}
+%\usepackage{amsmath,amsthm,amssymb} % 引入 AMS 數學環境g....
+\newtheorem{definition}{Definition}
+\newtheorem{hypothese}{Hypothese}
+%\newtheorem{theorem}{Theorem}
+%\setlength\titlebox{6.5cm}    % You can expand the title box if you
+% really have to
+\begin{document}
+\title{Resonation Elicits Retweet: Modeling Subjectivity for Retweet Analysis}
+
+\maketitle
+\begin{abstract}
+Retweet is the core mechanism of information diffusion on Twitter, many factors have been proved to influence rewteet behavior.
+Few studies have investigated the subjective motivation of a user to retweet a message.
+In this paper, in the light of psychological theory, we assume that a tweet is retweeted by a user because of similar subjectivity, and propose a sujective model to combine both the topics of interest and opinions of users. 
+We evaluate our model in the retweet analysis problem to verify its influence on retweet behavior and effectiveness in the retweet prediction performance. 
+\end{abstract}
+
+% A category with the (minimum) three required fields
+\category{H.4}{Information Systems Applications}{Miscellaneous}
+%A category including the fourth, optional field follows...
+\category{H.3.3}{Information Search and Retrieval}{Information filtering}[performance measures]
+
+\terms{Model, Experimentation}
+
+\keywords{Twitter, subjective model, retweet behavior, resonation} % NOT required for Proceedings
+
+\section{Introduction}
+Nowadays  successful social media service such as Twitter has become an integral part of the daily life of millions of users. 
+Twitter is well-known for its freedom of publishing short message(i.e. tweet) within a limited length of 140 characters, and viral spreading of information across complicated social networks.
+Since launched in March 2006, the service rapidly has gained worldwide popularity, with over 500 million registered users at the end of year 2012, who have generated over 340 million tweets per day\footnote{\url{http://en.wikipedia.org/wiki/Twitter}}.
+Beyond the large collection of user-generated content, Twitter provides its social network functions for connection, communication, and information diffusion by allowing users to message one another directly and follow one another publicly. 
+The complex networks and large content volume of Twitter provide researchers with insights into people’s social behavior on a scale that has never been possible\cite{DBLP:conf/hicss/StieglitzD12}.
+A number of researches beyond network analysis\cite{Kwak:2010TSN} have been carried out successfully on Twitter. 
+For instance, tweets were analyzed to identify correlation between the swing of collective mood expressed on Twitter and the stock market index\cite{journals/jocs/BollenMZ11}, also tweets were used to forecast the box-office revenues of movies based 
+on the their mentions volume on Twitter\cite{Asur:2010PFS}, and Twitter was even used for real-time natural disasters detection\cite{Sakaki:2010EST}.\\
+Information diffusion is a lasting research for social scientists who might want to study the problem on Twitter because an established convention of Twitter facilitates information diffusion. 
+Despite the restricted length of tweets, retweet convention and complex networks of Twitter provide an unprecedented mechanism for the spread of information\cite{Jenders:2013APV}. 
+In fact almost a quarter of the tweets published by users are retweeted from others\cite{conf/cikm/YangGCTLZS10}. 
+Therefore, it is important to make it clear how retweet works in order to understand how information is diffused on Twitter. 
+This paper focuses specifically on how information spreads on Twitter by exploring underlying reasons why a user retweet a particular tweet out of the overwhelming message flow.\\ 
+Several studies on retweet have concentrated on analyzing retweet habits and influencing factors\cite{Boyd2010,Kwak:2010TSN,Suh2010}, most of which are generic, not user oriented.
+From the point of users, the practice of retweet includes reading the tweet, deciding whether it is worthwhile to share, and then acting on it, hence retweet behavior indicates that the user considers the tweet containing information interesting to him.
+Therefore modeling users provides an important perspective for retweet behavior analysis.
+Studies on the retweet behaviors of users have shown that an enriched user model gives coherent and consistent explanation for retweet behavior\cite{Abel:2011AUM,conf/icwsm/MacskassyM11,conf/wsdm/FengW13}. 
+Until now, researchers have tried to model users from four types of information to characterize a Twitter user:
+profile features(“\textbf{Who you are}”), tweeting behavior(“\textbf{How you tweet}”), linguistic content(“\textbf{What you tweet}”), 
+social network(“\textbf{Who you tweet}”)\cite{Pennacchiotti:icwsm11}. 
+Despite demographic profile, tweeting habits and network connections might determine source and scope of information users could be exposed to, topics of interest of users encapsulated in rich linguistic content have been proved consistently valuable for retweet bahavior explanation\cite{conf/icwsm/MacskassyM11}.\\
+Beyond merely publishing news and reports, Twitter is becoming a large platform where different opinions are presented and exchanged by allowing users comment, discuss, compliment, argue and complain over topics they are interested in freely. 
+Studies have demonstrated that user-generated content with rich sentiment information can trigger more attention, feedback or participation\cite{DBLP:conf/hicss/StieglitzD12}, and tweets with high emotional diversity have a better chance of being retweeted\cite{conf/icwsm/PfitznerGS12}.
+However, users receive thousands of tweets about different topics every day, which one will be retweeted depends on the subjective choice of users.
+Philosophically, subjective initiative nature of human determines the pattern of behavior is subjectivity driven.
+Researchers in the domain psychology have identified subjectivity as the underlying factor that influence the decision-making about taking what activities to process incoming stimuli\cite{Moore2008,Haggard2002a}.
+According to theory of Biased Assimilation, bias is an inherent feature of human subjectivity, which is characterized by a lack of appropriate balance, neutrality and critical doubt in argumentation, and bias is a consistent, robust characteristic of behavior, so people are prone to choose and diffuse information according to their own biased subjectivity\cite{Hyman2000,sunstein2009rumors}.
+It can be infered from above explaination that users are prone to diffuse a tweet that can raise resonation with their biased subjectivities.
+On Twitter, subjectivity may be represented as topics and opinions articulated in the information generated by users.  
+Inspired by this observation, we explore the linguistic information of Twitter to model the subjective tweets and users, and investigate how the subjective model could benefit the retweeting behavior analysis.\\
+To establishing subjective model on Twitter faces a number of challenges, including sparsity of information, dynamics of topics and opinions,  informal nature of language, etc.
+However, we are interested in understanding retweet behavior at a local level rather than at a global level as most of time retweet behavior pertains to the local network of the tweet publisher and followers, thus the relatively tiny size of local network and topic homophily lower the impact of sparsity.
+Given the biased nature of subjectivity, while new information may arise and old information may change their meaning, user biased subjectivity tends to be more consistent and less prone to external perturbations, unless users actually change their opinion, which is usually a relatively long process.
+Our work aims to define and establish the subjective model to identify the role of subjectivity in the processes of information spreading over Twitter.
+By using "\textbf{Subjectivity}" , we refer to both topics of users' interests and users' opinions towards these topics, so we model users not only by topics they care about, but also by "\textbf{what they think about the topics}". 
+Technically, We use the state-of-the-art Latent Dirichlet Allocation\cite{blei2003latent} topic model to find the topics users are talking about, and sentiment analysis\cite{pang2008opinion} techniques to determine user's opinions towards these topics from user-generated content simultaneously. 
+Our contributions can be summarized as follows:
+\begin{itemize}
+\item Based on psychological theory, we put forward formal defination of subjective model for users and tweets.
+\item Based on state-of-the-art LDA topic models and sentiment analysis techniques, we propose the method of establishing subjective 
+model from user-generated content on Twitter.
+\item Combined with the retweet behavior analysis problem, we analyze the impact of subjective model on retweet behavior and compare our model with other modeling methods.
+\item We apply subjective model to the retweet predicting problem in a classification 
+framework, and combine our model with other features to reveal how subjective model can help with the prediction, resulting in  significant performance improvement.
+\end{itemize}
+The rest of the paper is organized as follows: Section 2 gives related work to our research, the proposed subjective model is defined and specified in section 3. The combination of subjective model with retweet analysis problem is elaberated in section 4. The qualitative and quantitative evaluation is 
+described in section 5. Section 6 summarizes the paper and points to future work.
+\section{Related Work}
+In this section, we give a introduction to three lines of relevant research work: $ 1) $ retweet behavior analysis, $ 2) $ user profile and user modeling, and $  3)$ sentiment analysis. 
+\subsection{Retweet behavior analysis}
+A large body of studies have analyzed characteristics of of retweet, examining factors that lead to increased retweetability and designing models to predict the probability of being retweeted. 
+As for factors influencing retweetability, Suh et al.\cite{Suh2010} found that tweets with URLs and hashtags were more likely to be retweeted, and there was a strong linear relationship between the number of followers and the likelihood that the tweet be retweeted. 
+Macskassy and Michelson\cite{conf/icwsm/MacskassyM11} studied a set of Twitter users over a period of a month and sought to explain the individual rewteet behaviors.
+They found that models derived from tweets content could explain most of retweet behaviors.
+Comarela et al.\cite{Comarela:2012UFA} found previous response to the tweeter, the tweeters’ sending rate, the freshness of information, the length of tweet could affect followers’ response to retweet. Starbird and Palen\cite{Starbird:2012RRI} addressed specifically the retweet mechanism during crises. 
+They found that tweets with topical keywords were more likely to be retweeted. 
+There are also works extending the analysis to build retweet prediction model. 
+Yang et al.\cite{conf/cikm/YangGCTLZS10} designed features from factors that influence the retweet behavior and built a semi-supervised framework on a factor graph model to predict users’ retweet behaviors. 
+Hong et al.\cite{ericmedvet:hong2011} used features to train a logistic regression model to predict whether a tweet would be retweeted and also estimated the number of times it would be retweeted. 
+Petrovic et al.\cite{Osborne_Lavrenko_2011} introduced features such as novelty of a tweet and the number of times the author is listed to train a model with a passive aggressive algorithm. 
+They found the dominance of social features, while tweet features added a substantial boost to the performance.
+Jenders et al.\cite{Jenders:2013APV} annalyzed the “obvious” and “latent” features from structural, content-based, and sentimental aspects of both tweet and users, with respect to their impact on the spread of tweets. 
+They found a combination of features covering all aspects was the key to high prediction quality.
+Naveed et al.\cite{Naveed:2011SMC,2011:NaveedGKC} introduced interestingness as static quality measure to capture the static content quality of tweets, and quantified it based on such features as Emoticons, sentiments and topics a tweet contains, then trained a logistic regression model to predict the probability of retweet for an individual tweet .
+Feng and Wang\cite{conf/wsdm/FengW13} built a graph made up of users, publishers and tweets nodes with all sources of information incorporating into nodes and edges, and proposed a feature-aware factorization model to re-rank the tweets according to their probability of being retweeted.
+Pfitzner et al.\cite{conf/icwsm/PfitznerGS12} proposed a new measure called emotional divergence to evaluate the retweet probability of a tweet and showed that highly emotional diverse tweets can have up to almost five times higher chances of being retweeted.
+From a global perspective, all papers listed above have tried to answer the question of “which tweets will be retweeted by anyone or not?”. 
+But they are weak to capture "Whether a tweet is retweetable from a user-centric perspective considering the interests and opinoins of users". 
+In this paper, we will try to answer this question by building a subjective model which is capable of capturing both the interests and opinions of users.
+\subsection{User profile and user modeling}
+With the popularity of social media, researchers have begun to pay close attention to the massive amount of data generated by users, and put forwards several techniques to model users on the data, which provide researchers with insights into user online behaviors. 
+Hannon, et al.\cite{Hannon:2010} proposed that Twitter users can be modeled by the tweets and relationships of Twitter social network.
+They found that social graph based approach could explore users who are ’near’ in the sense of follow relations, but failed to find users who are ’distant’, on the other hands, content-based approach could find similar users based on interests extracted from the content of tweets. 
+Macskassy and Michelson\cite{conf/icwsm/MacskassyM11} discover user’s topics of interest by leveraging Wikipedia as external knowledge to determine a common set of high-level categories that covers entities in tweets. 
+Ramage et al.\cite{RamageEtAl:10} made use of topic models to analyze Twitter content at large scale and at the level of individual users with 4S dimensions, showing improved performance on tasks such as post filtering and user recommendation. 
+These efforts about user modeling on Twitter have simply built model for each user by extracting key words, entities, categories or latent topics from tweet content. 
+Some researchers argued that user behavior could easily be affected by some external factors other than user interest.
+Xu et al.\cite{Xu:2012MUP} proposed a mixture model which incorporated three important factors, namely breaking news, friends’ timeline and user interest, to explain user posting behavior.
+Pennacchiotti et al.\cite{Pennacchiotti:icwsm11} proposed the most comprehensive method to model Twitter user for user classification. They focused on richer feature sets such as features derived from topic models, tweet sentiment analysis and explicit follower-followed links to exploit the user-created content. 
+Their work confirmed the value of in-depth features which reflect a deeper understanding of the Twitter user and the user network structure.\\
+Just as the Introduction section stated, previous researches have tried to model users from four types of information: profile features, tweeting behavior, linguistic content and social network. 
+Some studies perceive that the implicit features articulated in the user-generated content play an import role in user behavior analysises,  and they have proposed diverse techniques to capture such in-depth features to model user's interest. 
+Additionally, a few works even identify the correlation between sentiment of users and their behaviors.
+But they all fail to model subjectivity of users as a whole.
+Motavited by the observation, we firstly put forward the subjective model to combine both the interests and opinions information, and use the model to analyze  retweet behavior. 
+\subsection{sentiment analysis}
+Sentiment analysis has been a hot research area for years, and previous research mainly focuses on product or movie reviews. 
+Generally, there are two major popular methods, i.e. rule-based approaches and machine learning approaches. 
+Recently, the sentiment analysis research has begun to pay more and more attention to social media such as Twitter because of the massive user-generated content and the unique characteristics which could be incoporated into sentiment analysis. 
+Hu et al.\cite{Hu:2013www} interpreted emotional signals available in social media data for unsupervised sentiment analysis by providing a unified way to model two main categories of emotional signals: emotion indication and emotion correlation. 
+Jiang et al.\cite{Jiang:2011TTS} focused on target-dependent Twitter sentiment classification, they proposed to improve target-dependent Twitter sentiment classification by taking target-dependent features and related tweets into consideration. 
+Wang et al.\cite{Wang:2011TSA} focused their study on hashtag-level sentiment classification,and illustrated that three types of information is useful to address the task including sentiment polarity of tweets containing the hashtag, hashtags co-occurrence relationship and the literalmeaning of hashtags.
+Amir Asiaee T et al.\cite{AsiaeeT:2012} presented a cascaded classifier framework for per-tweet sentiment analysis by extracting tweets about a desired target subject, separating tweets with sentiment, and setting apart positive from negative tweets.
+Hu et al.\cite{Hu:2013ESR} extracted sentiment relations between tweets based on social theories, and proposed a novel sociological approach to utilize sentiment relations between messages to facilitate sentiment classification and effectively handle noisy Twitter data.
+Motivated by sociological theories that humans tend to have consistently biased opinions, Guerra et al.\cite{CalaisGuerra:2011BOT} addressed challenges of topic-based real-time sentiment analysis by proposing a novel transfer learning approach with a suitable source task of opinion holder bias prediction.
+Thelwall et al.\cite{Thelwall:2010SSS,Thelwall:2012SSD} designed SentiStrength, an algorithm for extracting sentiment strength from informal English text, which exploited the grammar and spelling styles in typical microblogs with human-evaluated dictionaries for words connotated with positive or negative sentiments.
+There is another line of works in sentiment analysis which is very close to our defination of subjective model, which focuses on combining sentiment detection with topic models to produce probability generative model. 
+Several unified models of topics and sentiment have been proposed, and they extend basic topic model to explain the sentiment trends with topic from documents such as reviews or comments\cite{Mei:2007TSM,Lin:2009JSM,Jo:2011ASU}, but they often detect the sentiment on document level and not suitable for Twitter.
+Zhao et al.\cite{Zhao:2012UTM} have presented a hierarchical generative model, called user-sentiment topic model (USTM) used in social network analysis to find influential users on topic level with sentiment information.
+They give us another inspiration that our future works will try to build our subjective model on probability generative model.
+In this paper, we take a simple way to build our subjective model: firstly extract topics from tweets of users, then use a robust rule-based classifier to get sentiment of each tweet, finally combine the topics and sentiment into subjective model.
+\section{Subjective Model}
+In this section, we firstly give definition of subjective model and describe the techniques of building subjective model elaborately, then formularize the retweet analysis problem, and show how to apply subjective model to the retweet prediction.
+\subsection{Definition}
+As section 1 has stated, the subjectivity of human is the underlying reason that drives his social behavior.
+When a user of Twitter sees a tweet in the message flow he has followed, the inner subjectivity defines his retweet choice for the tweet, which depends on whether the the topics and the opinions of the tweet could arouse resonation of the user.
+If the tweet  is similar with the user in both topics of interest and opinions towards these topics, the user might have high probability to propogate it to his followers by taking retweet behavior. 
+The core of problem lies in that how to define and find the subjecitvity of the user and the tweet(we refer subjectivity of tweet as the topics it talks about and the opinions towards these topics it holds). 
+Subjecitvity has been extensively studied by psychologists from different dimensions to characterize the personality of people based on such recordes as historic behaviors and remarks\cite{Engbert2007}, and linguists have defined the subjectivity of the language that the speaker always shows their perspectives, attitudes and sentiments in the discourse\cite{stein2005subjectivity}. 
+The user-generated content of social media provide researchers with massive language data that traditional collection methods can not achieve.
+Based on plenty of data available, we firstly propose and define the subjective model on Twitter, and we declare that our defination can be easily be adapted for other social media platforms as well.
+\begin{definition}[Subjective Model For User]
+The subjective model of a user $\mathrm{u \in U}$ is a set of topics $\mathrm{t_{i} \left( i \in \lbrace1 \cdots n \rbrace \right) }$ 
+the user talks about in a topic space $\mathrm{T}$ and the user's opinions $\mathrm{o_{i}}$ towards these topics.
+\begin{equation}
+P \left( u \right) = \lbrace \left( t_{i}, w_{u} \left( t_{i} \right), d_{u,t_{i}} \left( o_{i} \right) \right) \,\vert  t_{i} \in T, \, o_{i} \in O \rbrace
+\end{equation}
+where:
+\begin{itemize*}
+\item with respect to the given user $\mathrm{u}$,  for each topic $\mathrm{t_{i} \in T}$, its  weight $\mathrm{ w_{u} \left( t_{i} \right)}$ represents the distribution of the user's interests on it.
+\item opinion $\mathrm{o_{i}}$ of user towards topic $\mathrm{t_{i}}$ is a sentiment distribution  $\mathrm{d_{u,t_{i}} \left( o_{i} \right)}$ over sentiment valence space $O$.
+\end{itemize*}
+\end{definition}
+As medium for the users to express themselves, tweets are also subjective to some extent. In order to quantitatively measure the degree of resonation betweet a tweet and its followers, the tweet should also be modeled in the same form as the user. Accordingly, the subjective model of a tweet is define as following:
+\begin{definition}[Subjective Model For Tweet]
+The subjective model of a tweet $\mathrm{c \in C}$ is a set of topics $\mathrm{t_{i} \left( i \in \lbrace1 \cdots n \rbrace \right) }$ it talks about in the same topic space $\mathrm{T}$ as the users, and the opinions $\mathrm{o_{i}}$ it expresses towards these topics.
+\begin{equation}
+P \left( c \right) = \lbrace \left( t_{i}, w_{c} \left( t_{i} \right), d_{c,t_{i}} \left( o_{i} \right) \right) \,\vert  t_{i} \in T, \, o_{i} \in O \rbrace
+\end{equation}
+\end{definition}
+In order to be understandable, we intuitively illustrate the subjective model of a user in Firgure 1, in which each cell of the table is a combination of two distribution: $ \mathrm{w \left( t_{j}\right)}  $ stands for the topics of interest distrbution of the user $ \mathrm{u} $ over topic space $ \mathrm{\left\lbrace Topic.1, \cdots, Topic.m \right\rbrace}  $; $ \mathrm{d_{t_{j}} \left( o_{i} \right) } $ stands for the opinion distribution for topic $ \mathrm{t_{j}} $ of the user $ \mathrm{u} $  over sentiment valence space $ \mathrm{\left\lbrace Valence.1, \cdots, Valence.n \right\rbrace}  $.
+\begin{figure}
+\centering
+\includegraphics[width=3.0in,height=1.8in]{subjectivemodel1.eps}
+\caption{Illustration of Subjective Model}
+\label{fig:graph1}
+\end{figure}
+\subsection{Retweet Problem Statement}
+Although our defination of subjecive model might explain several behaviors of social media users, we are interested in retweet behavior in this paper, and apply subjective model to understanding underlying mechanism of information diffusion at a micro-level. 
+It has been illustrated that any retweeted tweet is able to reach an average of 1,000 users no matter how many followers the original tweet has\cite{Kwak:2010TSN}.
+Retweet function has given every user the power of spreading information broadly, and individual user has the power to dictate which information is important and should spread by pushing retweet button. 
+In fact a user only retweets a small number of tweets and only small subset of followers actually retweet a tweet because the likelihood of a tweet to be retweeted depends on both network context and tweet content. 
+Apart from network context, a tweet is more likely to be retweeted by users are who are interested in the tweet, therefore, we are not only interested in modeling the tweet by itself but also how the tweet resonates with the individuals who may decide to pass it on, and we put a much stronger emphasis on the content and try to model the user's retweeting decision by deriving high-level content-based topic and opinion features. \\
+In fact whether a tweet is retweeted depends heavily on context such as the author's position in the social graph or the time of day the tweet is published. 
+A tweet with only few or passive followers is less likely to be retweeted, and tweets published in the night have less chance to get retweeted than daytime. 
+Despite such a fact, neither contextual factor has any influence on the content of a tweet, therefore we deliberately ignore context information to avoid introducing contextual bias into our analysis of rewteet by proposing a hypothese.
+\begin{hypothese}[H1]
+A tweet is evenly visible to the followers who subscribe to it by following its author.
+\end{hypothese}
+The rationale behind this hypothesis is, that the motivation of a user to retweet a tweet is that the user considers only the tweet content that arouse resonation with the user.\\
+Many studies have highlighted that Twitter network structure better resembles an information sharing network than a interconnecing social network\cite{Boyd2010,Kwak:2010TSN}. 
+In the context of Twitter, the “following” relationship is a strong indicator of a phenomenon called “homophily”, which has been observed in many social networks.
+Homophily is a phenomenon that people of a social network “are homogeneous with regard to many sociodemographic, behavioral, and intrapersonal characteristics”\cite{mcpherson2001birds}.
+In other words, homophily implies that a user follows another user because he is interested in what another user talks about in tweets, and another user follows back because he finds they share similar interests. 
+According to the principle of homophily, we put forwards the concept of \textbf{Local Topic Space} that the content generated by users in the local network of a user and his followers concentrate on a few local topics.\\
+If a tweet is published, all followers will recieve it in their timeline. We suppose every follower read it and have the chance to retweet it if they find it worth to according to our hypothese H1.
+Ignoring the influence of context information, the goal of our study is to make it clear whether the subjectivity of tweet and the users influence retweet, and if so, the analysis of retweet will be reinforced by taking the subjective factor into account.
+The problem we study can be stated as follows:\\
+Let $ F, P, C $ denote the follower set, publisher set and tweet set respectively. As a tweet is created by only one publisher but can be received by multiple followers, each tweet can be defined as a tuple $ <f, p, c, r_{fpc}>  $ where:
+\begin{itemize*}
+\item $ c \in C $ is a tweet, $ p \in P $ is the publisher of the tweet, and $ f \in F $ is a follower of the tweet.
+\item $ r_{fpc} $ is a binary label indicating whether the tweet $ c $ is retweeted by a follower $ f $.
+\end{itemize*}
+Our work focuses on the applicability of content-based subjective model as a static quality measure to analyze the relation between the subjectivities of users and their retweet beavior. 
+So we could project the tuple into the Local Topic Space $ T $, which is determined with the historic data published by the publisher $ p $ and the followers $ \{f|f \in F \} $, and represent $ f, p, c $ with their subjective models established in $ T $ to analyze their relation with the retweet label $ r_{fpc} $.
+\subsection{Concrete Retweet Problem}
+According to defination of subjective model, there are two distrbutions to model the subjectivity of a users and tweet: one is topic distribution, and the other is opinion distribution to the topics, both of which need to be infered from historic data produced by users.
+As an open platform for data collection, Twitter has become a valuable source for quantitative researchers in the last few years.
+However, content analysis on Twitter poses unique challenges: tweets usually are very short with limit of 140 characters, informal languages are widely used unlike the standard written English, which make many supervised models of machine learning and Natural Language Processing invalid. 
+Effectively modeling content on Twitter requires techniques that can readily adapt to these challenges and require little supervision.
+In this section, we firstly proceed with detailed methods of how to establish subjective model, and then describe how to apply subjective model to the analysis of retweet behavior.
+\subsubsection{Local Topic Sapce}
+As stated above, the connection relation between publisher and followers indicates their common interests in a Local Topic Space. 
+However, topics usually are not explicitly expressed by users, the topics of a tweet are latent features and have to be inferred by analyzing its content.
+The distillation of topics from tweet content requires methods that are suitable for short texts with heterogeneous vocabulary. 
+Previous efforts have tried to find topics by finding key words\cite{Chen:2010STE}, extracting  entities\cite{Abel:2011AUM}, and linking tweets to external knowledge categories\cite{conf/icwsm/MacskassyM11}.
+However, the sparsity is a main problem for these methods to model the users' interests because even users have common local topics they still might refer to a topic with different expressing way.
+Recent works show that topic models such as \textbf{Latent Dirichlet Allocation (LDA)} model and its extensions\cite{blei2003latent,conf/wsdm/WengLJH10} have been efficient ways to characterize latent topics of large volum corpus. 
+Topics of topic models are broader in concept than individual word, since a single topic consists of the whole collection of related words. 
+Thus, the latent topics are more suitable to understand the common topics of interest among different users who use various words to describe the same topic.
+Therefore we use LDA model to find latent topics that are talked about between publisher and followers to construct their Local Topic Space. \\
+Based on “bag of words” assumption, LDA treats each document as a vector of word counts, and by introducing latent variables, each document is represented as a probability distribution over latent topics, while each topic is represented as a probability distribution over a number of words. 
+The model has two parameters to be inferred from corpus: one is  document-topic distributions, and the other is topic-word distributions. 
+To distill the topics that users are interested in, documents of LDA should naturally correspond to tweets. 
+Since our goal is to understand the topics that each user is interested in rather than the topics that each single tweet talks about, we aggregate the tweets published by each user into one document. 
+We adapt the original LDA model to the Twitter by replacing documents with aggregated tweet documents for every user in the local network. 
+Hence a user can be represented as a multinomial distribution over topics corresponding to the topic distribution of the user's subjective model.
+The generative process can be graphically represented using plate notation in Figure 2. 
+\begin{figure}
+\centering
+\includegraphics[width=3.0in,height=1.0in]{LDA.eps}
+\caption{Plate illustration of the user-level LDA model.}
+\label{fig:graph2}
+\end{figure}
+Formally, given a set of users $ U $ and the number of topics $ K $, each user $ u \in U $ could be represented by a multinomial distribution $ \theta_{u} $ over topics with a Dirichlet prior parameterized by $ \alpha $. 
+A topic $ k $ is represented by a multinomial distribution $ \beta_{k} $ with another Dirichlet prior parameterized by $ \eta $. 
+The generative process works as follows:
+\begin{itemize*}
+\item For each user $ u $, draw $ \theta_{u} \sim Dir \left(  \alpha \right) $.
+\item For each word $ w_{u,n} $ in a user vocabulary, $ n \in \left\lbrace 1, \cdots, N \right\rbrace $ :
+\begin{itemize*}
+\item draw a topic $ z_{u,n} \sim Multinomial \left( \theta_{u}  \right) $;
+\item draw a word $ w_{u,n} $ from multinomial probability \\$  p \left( w_{u,n} \vert z_{u,n}, \beta_{k}  \right) $ conditioned on the topic $ z_{u,n} $.
+\end{itemize*}
+\end{itemize*}
+The parameters $ \theta_{u} $ and each $ \beta_{k} $ can be estimated by Gibbs sampling or variational inference.
+We use variational inference-based topic model package Gensim\cite{rehurek_lrec}.
+\subsubsection{Sentiment Analysis of Tweets}
+The tweets that users have published are encoded with their opinions towards topics-of-interest. 
+In order to explore the opinions of users, we need to underdtand sentiment embeded in each tweet, which is the task of sentiment analysis technique.
+The researches of sentiment analysis begin with traditional text genres such as reviews and news comments. 
+The freely expressing opinions of Twitter has made it targret of sentiment analysis to understand public opinions about topics or products.
+The particular language characteristics of short length and informal expressions pose challenges to traditional sentiment analysis techniques.
+The main sentiment analysis techniques could be catergorized into machine learning based approaches and rule based approaches.
+Machine learning based approches often need labeled data for the training process, which is often impossibe for Twitter because of the large volum and dynamic language characteristics. 
+Rule based approaches could adapt to Twitter with good flexibility by changing the particular characteristcs into rules, which is proved more robust and efficient.\\
+In our work, we use the rule based package SentiStrength\cite{Thelwall:2010SSS}. 
+SentiStrength has been built especially to cope with sentiment analysis in short informal text of social media. 
+It combines lexicon-based approaches with sophisticated linguistic rules adapted to social media, e.g. taking care of negotiations, misspellings as well as punctuation and emoticons. 
+SentiStrength is more suitable for analyzing sentiment of tweets than other approaches in our research settings.
+SentiStrength assigns two values to each tweet standing for sentiment strengthes: a measure of positive and a measure of negative sentiment, both on absolute integer scales ranging from 1 to 5, with 1 denoting neutral sentiment and 5 denoting highest sentiment strength.
+\begin{itemize*}
+\item The positive sentiment score $ p \in \left[ 1, 5 \right]  $ , is basically equal to the sentiment score of the most positively classified word in the tweet, adjusted by linguistic rules.
+\item The negative sentiment score $ n \in \left[ -5, -1 \right] $, is basically equal to the sentiment score of the most negatively classified word in the tweet, adjusted by linguistic rules.
+\end{itemize*}
+Another reason we use SentiStrength lies in that the output is not simple binary(positive, negative) label but a fine-grained strength scales which is in accordance with opinion valence space of subjective model and catch fine opinion distributions of users. 
+For the convenience of distribution calculation, we map the output of SentiStrength to single-scaled opinion valence space $ \left[ 0, 8 \right] $ based on:
+\begin{equation}
+o= \lbrace 
+\begin{array}{lll}
+{p+3} & \text{if } \vert p \vert > \vert n \vert \\
+{n+5} & \text{if } \vert n \vert > \vert p \vert \\
+{4}  & \text{if } \vert p \vert = \vert n \vert
+\end{array}
+\end{equation}
+In the opinion valence space, value 4 indicates neutral sentimnent, while values above 4 indicate positive sentimnent and values below 4 indicate negative sentimnent, so that we can aggregate all sentiments towards a topic as a opinion distribution over opinion valence space.
+\subsubsection{Concrete Subjective Model}
+On the statistical topic ananlysis and sentiment analysis illustrated above, we could now concrete subjective model for each user and tweet in a local network consisting of a publisher and his followers. 
+Suppose a tweets collection published by a user $ u $ as $ C_{u}=\left\lbrace c_{i} \vert i \in \left[ 1, \cdots, N \right]  \right\rbrace  $, and the collection $ C_{u} $ is concatenated to one document $ d_{u} $ during the construction of Local Topic Space $ T=\left\lbrace t_{i} \vert i=1, \cdots, K \right\rbrace $.
+In the Local Topic Space $ T $, a topic model is built with parameter $ \theta $\ representing the distribution of each user over topics his tweets talk about, and parameter $ \beta $ representing the distribution of each topic over the vocabulary of all tweets.
+To find the sentiment of each tweet $ c $ in collection $ C_{u} $, sentiment analysis technique is applied to $ c $ and outputs a sentiment strength $ s_{c} $ as the last section has described. 
+The subjective model of user $ u $ is built according to following procedure:
+\begin{itemize*}
+\item Firstly, for user $ u $, the corresponding component $ \theta_{u} $ of parameter $ \theta $ is the distribution of his topics of interest in the Local Topic Space $ T $, and probability $ p\left( z_{u} \vert \theta_{u} \right)  $ could be regarded as the weight of subjective model $ w_{u} \left( t_{i} \right)  $. Topices of interest could be defined as $ Z_{u}= \left\lbrace z_{u} \vert p\left( z_{u} \vert \theta_{u} \right)>0 \right\rbrace $.
+\item Secondly, as topics of each tweet $ c $ are considered as the target of sentiment expressed in $ c $, the topic model of Local Topic Space $ T $ is applied to each tweet $ c $ and outputs topics $ c $ talks about as $ Z_{c} =\left\lbrace z_{c} \vert p\left( z_{c} \vert \theta, \beta, Z_{u} \right)>0 \right\rbrace $.
+\item Thirdly, the opinion distribution of user $ u $ towards topic $ t \in Z_{u} $ could be calculated as:
+\begin{equation}
+d_{u,t}\left( o \right) = \left\lbrace \dfrac{N_{o}}{\sum_{o \in O} N_{o}} \vert O=\left[ 0, \cdots, 8 \right] \right\rbrace 
+\end{equation}
+where $ N_{o} $ is the number of times user $ u $ express opinion towards topic $ t $ with strength $ o $, could be calculated as:
+\begin{equation}
+N_{o}=\sum_{c \in Cu} I\left( s_{c} \right) , \text{ if } s_{c}=o \& t \in Z_{c}
+\end{equation}
+\begin{equation}
+I\left( s_{c} \right)=\lbrace
+\begin{array}{ll}
+{1} & \text{if } s_{c}=o \& t \in Z_{c}\\
+{0} & \text{else}
+\end{array}
+\end{equation}
+For simplicity, we assump the opinion of tweet $ c $ is expressed towards every topic it talks about in $ Z_{c} $.
+\end{itemize*}
+Totally, the subjective model of user $ u $ is thus be describe as:
+\begin{equation}
+P\left( u \right)= \left\lbrace \left( t, p\left( z_{u} \vert \theta_{u} \right), d_{u,t}\left( o \right) \right)  \vert t \in Z_{u}, o \in O  \right\rbrace  
+\end{equation}
+and accordingly the subjective model of tweet $ c $ is:
+\begin{equation}
+P\left( c \right)= \left\lbrace \left( t, p\left( z_{c} \vert \theta, \beta \right), d_{c,t}\left( o \right) \right)  \vert t \in Z_{c}, o \in O  \right\rbrace  
+\end{equation}
+\subsubsection{Retweet Analysis Formulation}
+On the theoriy of psychology, our study try to understand the underlying reasons that a user retweet a tweet by investigating the relationship among subjective model of publisher, follower and tweet. For a tweet $ c $, the corresponding publisher $ p $, and a list of followers $ F= \left\lbrace f_{i} \vert i=1, \cdots, N \right\rbrace  $, we could define a tuple $ \left\langle f_{i}, p, c, r_{fpc} \right\rangle  $ for each $ f_{i} \in F $.
+We firstly build subjective model $ P\left( u \right)  $ for each user $ u \in F \bigcup p $ and $ P\left( c \right)  $ for tweet $ c $ in the Local Topic Space $ T $ defined by tweets published by users in $ F \bigcup p $. 
+We are interested in how the tweet resonates with the users who may decide to retweet it.
+By using the word "resonate", we assump that a user retweet a message because he not only find its topics interesting but also share similarities in their opinions towards these topics.
+With the subjective models built for users and tweets, we could define a similarity measurement to quantify the resonation among them:\\
+For tweet $ c $ and follower $ f_{i} $, we define:
+\begin{equation}
+Sim\left( c,f_{i} \right) = similar\left( P\left( c \right), P\left( f_{i} \right) \right)
+\end{equation}
+according to equation $ \left( 7 \right), \left( 8 \right) $:
+\begin{equation}
+\begin{split}
+Sim\left( c,f_{i} \right) = \lambda \ast Dist\left( p\left( z_{c} \vert \theta, \beta \right), p\left( z_{f_{i}} \vert \theta_{f_{i}} \right) \right) \\
++\left(1-\lambda \right) \ast \left( \sum_{t \in T} Dist \left( d_{c,t}, d_{f_{i}, t} \right)  \right)
+\end{split}
+\end{equation}
+where 
+\begin{itemize}
+\item $ \lambda $ is coefficient used to control the propotions of topic simlarity and opinion similarity in the holistic subjective model similarity, and we initiate it by setting $ \lambda =0.5 $. 
+\item $ Dist $ is the similarity measurement between two distribution, we use \emph{Cosine Similarity } in our research.
+\end{itemize}
+Accordingly we could define similarity between publisher $ p $ and follower $ f_{i} $ as:
+\begin{equation}
+\begin{split}
+Sim\left( p,f_{i} \right) = \lambda \ast Dist\left( p\left( z_{p} \vert \theta_{p} \right), p\left( z_{f_{i}} \vert \theta_{f_{i}} \right) \right) \\
++\left(1-\lambda \right) \ast \left( \sum_{t \in T} Dist \left( d_{p,t}, d_{f_{i}, t} \right)  \right)
+\end{split}
+\end{equation}
+\section{Experiment}
+In this section, we describe dataset used in our experiment, then instantiate the procedure how subjective model is built from datset. Afterwards, we present a comparison study that validates our intuitions as to how the subjective information influence retweet behavior of users. Finally, we evaluate the effectiveness of subjective model with retweet prediction task.
+\subsection{Dataset}
+We adopt an off-the-shelf Twitter dataset\cite{Luo:2013Sig}.
+For the dataset, 500 randomly selected English tweets which had been retweeted at least once were used as test tweets, then each test tweet was chosen as starting point to collect data of its publisher and followers.
+Summary statistics of the data we use are listed in Table 1.
+\begin{table}
+\centering
+\caption{Retweet Dataset Statistics}
+\begin{tabular}{|c|c|}
+\hline
+Total tweets which have been retweeted & 500 \\
+Average number of followers per tweet & 89 \\
+Total retweeters & 5214 \\
+Total non-retweeters & 40317  \\
+\hline
+\end{tabular}
+\end{table}
+\subsection{Example of Subjective Model Building}
+As the core of our work, how to build subjective model has been elaborated in section 3.3.3, in this section we make the procedure and the resulted model intuitive with Twitter data. 
+There are 500 test tweets, 500 corresponding publishers, 4,5531 followers and 6,277,736 tweets published by all users before in our dataset, the relations are illustrated in Figure 3.
+\begin{figure}
+\centering
+\includegraphics[width=3.0in,height=2.2in]{dataset.pdf}
+\caption{Illustration of the dataset structure.}
+\label{fig:graph3}
+\end{figure}
+There is a local netwok structure for each tweet of 500 test tweets as figure shows, consisting of its publisher and followers connected with "following" relationship.
+We build a local topic space for each local netwok and got 500 local topic spaces, within which all 500 publishers and 4,5531 followers are distributed.
+Next operations are carried out according to equation $ \mathrm{\left( 4 \right), \left( 5 \right), \left( 6 \right) } $ to build opinion distribution for each user.
+Lastly, we could build subjective model for each user and test tweet by combining their topics of interest distribution and opinion distribution according to equation $ \mathrm{\left( 7 \right), \left( 8 \right) } $.\\
+As an example, we present subjective models for one of the 500 test tweet, its publisher, and two followers(one retweet the tweet while the other does not) as Figure 4 shows.
+\begin{figure}
+\centering
+\includegraphics[width=3.2in,height=2.0in]{tweets10.pdf}
+\caption{Subective Model Examples}
+\label{fig:graph4}
+\end{figure}
+For Figure 4, the right part is topic distribution, the left part is opinion distribution for each topic.It is obvious that the 14th topic the tweet talks about in the local topic space.
+In order to make Figure 4 vividly, we plot word clouds of top words for the 14th topic , the tweets of publishers and two followers as Figure 5 shows\footnote{We use TagCrowd(\url{http://tagcrowd.com/}) to produce word cloud}.
+\begin{figure}
+\centering
+\includegraphics[width=3.2in,height=2.0in]{text_cloud.pdf}
+\caption{Word Cloud Illustration}
+\label{fig:graph5}
+\end{figure}
+In the example, the test tweet content is:\\
+\textit{\textbf{Tweet:} Sometimes the right person for you was there all along. You just didn’t see it because the wrong one was blocking the sight.}\\
+The tweet content is about topic of "love between people" and the opinion of tweet is neutral towards the topic, which is in accordance with the 14th topic word cloud in Figure 5 and subjective model of tweet in Firgure 4.
+The tweets of the publisher also talks about "love between people", and his opinion is mainly neutral as it is demonstrated from Figure 4,5.
+As for two followers, the "retweeter" who retweet the example tweet has published tweets about two topics(the 14th and 52nd topic) uniformly and his opinions towards the two topics are mainly neutral;
+while the other one who does not retweet the example tweet(we call "unretweeter") has also talked about two topics(14th and 56th topic), but he is mainly interested in "love between people" topic and his opinion is positive.
+Although two followers have common topic of interest(the 14th topic), the difference of their opinion towards the topic elicits their different retweet behavior, which proves subjective model is able to understand the undelying reasons of retweet behavior.\\
+In this section, We give an qualitative description about subjective model and its ability in explaining the retweet behavior with an exmple.
+For next section, We will quantitatively investigate the effeciveness of subjective model in rewteet analysis. 
+\subsection{Influence of Subjective  Model on Retweet}
+In our formulation of retweet problem we model retweet with subjective model in the form of similarity formula $ \mathrm{\left( 10 \right), \left( 11 \right) } $.
+By setting different value to $ \lambda $, the formula can be divided into different parts to model different factors that might influence user's rewteet behavior, which are:
+\begin{itemize*}
+\item \textbf{TTF}: \textbf{T}opic similarity between \textbf{T}weet and each \textbf{F}ollower $ \left( \lambda =1  \text{ in fomula} \left( 10 \right)  \right) $ 
+\item \textbf{OTF}: \textbf{O}pinion similarity between \textbf{T}weet and each \textbf{F}ollower $ \left( \lambda =0 \text{ in fomula} \left( 10 \right)  \right) $
+\item \textbf{STF}: \textbf{S}ubjective similarity between \textbf{T}weet and each \textbf{F}ollower $ \left( \lambda \in \left( 0,1 \right)   \text{ in fomula} \left( 10 \right)  \right) $ 
+\item \textbf{TPF}: \textbf{T}opic similarity between \textbf{P}ublisher and each \textbf{F}ollower $ \left( \lambda =1  \text{ in fomula} \left( 11 \right)  \right) $ 
+\item \textbf{OPF}: \textbf{O}pinion similarity between \textbf{P}ublisher and each \textbf{F}ollower $ \left( \lambda =0 \text{ in fomula} \left( 11 \right)  \right) $
+\item \textbf{SPF}: \textbf{S}ubjective similarity between \textbf{P}ublisher and each \textbf{F}ollower $ \left( \lambda \in \left( 0,1 \right)   \text{ in fomula} \left( 11 \right)  \right) $
+\end{itemize*}
+To analyze the influence of different factors on retweet, we averaged six similarity scores on 5214 followers who rewteet the test tweets and 5214 randomly selected followers who do not rewteet seperately. 
+Figure 6 shows the comparing result.
+\begin{figure}
+\centering
+\includegraphics[width=3.2in,height=2.0in]{component.pdf}
+\caption{Difference Between Retweet and Unretweet Users.}
+\label{fig:graph6}
+\end{figure}
+As the figure demonstrated, on average, the similarities scores of retweeted followers are clearly higher than unretweeted followers for all six factors, which proves that our assumption is reasonable. Specifically,
+\begin{itemize*}
+\item TTF score shows that a tweet is more likely to be retweeted by followers who find topics it talks about interesting to them, which is consistent with other studies\cite{conf/icwsm/MacskassyM11, conf/wsdm/FengW13};
+\item OTF score shows that opinions in a tweet is an important indicator to be rewteeted by by followers who hold similar opinions, although other studies\cite{conf/icwsm/PfitznerGS12,2011:NaveedGKC} have shown that sentiment in tweet have impact on rewteet, most of them don't consider the sentiment of followers and the sentiment similarity betweet tweet and its followers;
+\item STF score shows the subjective model we put forward is the most distinguishable feature among the six factors with the largest difference between retweeted and unrewteeted followers, which proves the effectiveness of subjective model;
+\item TPF score gives another perspective for retweet from the topic similarity between tweet publisher and followers, indicating that followers are more likely to retweet those whose interests are similar, which verifies the homophily principle of rewteet relation;
+\item OPF score indicates that similar opinions for common topics of interest also influence followers' decision of retweeting anothor user, which may be another proof of homophily of rewteet relation.
+\item SPF score is interesting in that it implies that similarity of subjecitve model between user and followers might cause their retweet, and we call this phenomenon "tight homophily" because it requires both topic homophily and opinion homophily.
+\end{itemize*} 
+The six scores used to model the factors that influence rewteet could be grouped into two aspects. 
+One is consisted of TTF, OTF and STF, which is direct and explicit by modeling the tweet and its followers;
+the other is consisted of TPF, OPF and SPF, which is indirect and implicit by modeling the tweet publisher and followers.
+The two aspects reflect properly the information sharing and diffusion structure of Twitter at micro-level as illustrated in Figure 3.
+\subsection{Performance of Retweet Prediction }
+The main purpose of subjective model is to help users find attracting information which could arouse their resonation from the overwhelming social media information streams. 
+In the context of Twitter, retweet is an important signal elicited by such resonation, because users are prone to broadcast their favorite tweets to their followers. 
+Thus, the performance of predicting retweet is a suitable measurement for the utility of subjective model.\\
+As section 3.2.3 stated, the retweet problem we study could be formularized as a tuple $< f, p, c, r_{fpc}> $.
+In the prediction experiment we need to determined the label $ r_{fpc} $ for each $ c, p, \text{and} f $. 
+The experiment can be regarded as a simulation of information diffusion process: when a user is browsing message streams he has subscribed for, he might find himself resonate with a tweet and retweet it to his followers.
+On the other side, when a new tweet is created, we want to know those followers who will retweet it after reading it(according to hypothese H1, it is assumed that all followers can see a newly published tweet evenly). 
+There are 5,214 users in our datset who retweet a test tweet, so we could extract 5214 tuple as positive instances with their label $ r_{fpc}=1 $.
+The other 40,317 users who do not retweet any test tweet are also extracted to form negative tuples with label $ r_{fpc}=0 $.
+For the consideration of balance between positive and negative instances, we randomly sample 5,214 negative instances into the final dataset.\\
+\subsubsection{Comparision With Other User Models}
+Firstly the comparison between our model with other user models (TF-IDF model\cite{Luo:2013Sig}, entity-based model and hashtag-based model\cite{Abel:2011AUM}) in predicting retweet are investigated.
+As for our model, the six parts defined above are used for comparison because they model different factors that influence retweet.
+For the comparing models, cosine similarities are calculated between tweets and their follower models.
+We use the logistic regression classifier of Scikit-learn machine learning package\cite{scikit-learn} for training, with 5-fold cross-validation in our balance dataset.
+And accuracy measurement is used for evaluation, which is defined as:
+\begin{equation}
+Accuracy=\dfrac{N_{\text{correct predictions}}}{N_{\text{all instances}}}
+\end{equation}
+Figure 7 shows the predictive results of our model and all other models.
+\begin{figure}
+\centering
+\includegraphics[width=3.2in,height=2.0in]{comparison.pdf}
+\caption{Comparison of Different Models.}
+\label{fig:graph7}
+\end{figure}
+The toppest accuracy of 68.67\% is the STF(Subjective similarity between Tweet and Followers) model of our method, which is clearly better than other models. 
+The accuracies of TF-IDF model and entity-based model are 63.45\% and 62.12\%, which are very close to our TTF(Topic similarity between Tweet and Followers, 63.88\%) model and OPF(Opinion similarity between Publisher and Followers, 62.96\%) model.
+While for hashtag-based model, its accuracy is  50.76\% , which is only little better than random selection (50\%) in that a very low usage if hashtag in the dataset.
+The accuracies of the other three model of our method are OTF(Opinion similarity between Tweet and Followers) model 64.80\%, TPF(Topic similarity between Publisher and Followers) model 62.58\% and SPF(Subjective similarity between Publisher and Followers) model 66.95\%.
+The results show that our subjective model can reach a better understanding of user retweet behavior than the other models.\\
+Figure 7 also show that the influence of topics number of LDA on the predicting accuracy, which arrives its top when the number is set to 60.
+\subsubsection{Evaluation For Retweet Classification}
+In this section, we feed the six parts of our model as features into a retweet classification task to verify the effectiveness of the subjective model. 
+We compare the performance of our model with a retweet prediction model of Luo et al.\cite{Luo:2013Sig} which use four feature families: Retweet History, Follower Status, Follower Active Time and Follower Interests. 
+We use LinearSVM of Scikit-learn package to build a retweet prediction model, leveraging two different features sets, one includes the six features derived from subjective model(marked as "SM6"), and the other is Luo et al.\cite{Luo:2013Sig}(marked as "LUO") feature set in which they use "bag-of-words" to model the followers interest.  
+We use the same dataset as section 4.4.1 with 5-fold cross-validation, and the accuracy as measurement.
+In addition, we set a baseline(marked as "RB") for evaluation, that followers who have retweeted the author’s previous tweets before are predicted as will retweet current tweet. 
+The result is listed in Table 2.
+\begin{table}
+\centering
+\caption{Prediction Accuracy of Different Models. Significant improvement over baseline with star($ \ast $) and LUO' model with dagger($ \ddagger $) (p$ < $0.05).}
+\begin{tabular}{|l|c|l|}
+\hline
+Feature Set & Accuracy(\%) & Significance\\
+\hline
+RB & 60.85 & \\
+LUO & 68.76 & $ \ast  $\\
+SM6 & 69.12 & $ \ast $ \\
+LUO($ \ominus $)+TTF & 69.20 & $ \ast $ \\
+LUO($ \ominus $)+TPF & 71.04 & $ \ast \quad \ddagger $ \\
+LUO($ \ominus $)+OTF & 71.88 & $ \ast \quad \ddagger $ \\
+LUO($ \ominus $)+OPF & 70.27 & $ \ast $ \\
+LUO($ \ominus $)+STF & 72.86 & $ \ast \quad \ddagger $ \\
+LUO($ \ominus $)+SPF & 72.05 & $ \ast \quad \ddagger $ \\
+LUO($ \ominus $)+All & 72.93 & $ \ast \quad \ddagger $ \\
+\hline
+\end{tabular}
+\end{table}
+As shown in table, the accuracy of baseline is 60.85\%, and both sets of features(LUO and our SM6) outperform the baseline significantly. 
+But our feature set shows no significant improvement over LUO feature set since the our model only tries to reflect the retweet motivation of users based on content, whereas other important factors associated with retweet are not considered, such as network context and reading habit of the user. 
+As denoted by "LUO($ \ominus $)+" in the table, we combine the two sets of features by replacing the Follower Interests features of LUO model with our six features one by one. 
+The accuracies are all improved over LUO after adding our features, which means that our model is of great importance for retweet prediction models. 
+Notice that, the most significant improvement(LUO($ \ominus $)+STF, 72.86\% versus 68.76\%) is the subjective similiarity features between tweet and followers, which proves our assumption that resonation between tweet and the followers elicits retweet behavior.
+Besides, the improvement by adding subjective similiarity features between publisher and followers(LUO($ \ominus $)+SPF, 72.05\% versus 68.76\%) is also obvious in that the resonation between publisher and follower indicates the tight homophily between them.
+And finally, the last row of table is the complete combination of two sets of features(LUO($ \ominus $)+All) by adding all six features to LUO feature set, and the performance shows no significant improvement over adding only STF feature.
+\section{Conclusion}
+In this paper, we propose subjective model to analyze user retweet behavior on Twitter in the light of psychological theory by assuming that retweet behavior should be ecilited by the subjective resonation between the tweet and its followers. 
+We define subjective model formally as combination of topic distribution and opinion distribution, and we concrete subjective model leveraging statistical topic model and sentiment analysis techniques.
+We demonstrate the effectiveness of the proposed model with retweet analysis problem and show that our model is able to reach more comprehensive understanding of user retweet behavior. \\
+Our future work mainly lies in two directions.
+Firstly, our subjective model is established in a simple way, and it is an interesting direction to establish it under the framework of generative topic-sentiment model, which has been applied in reviews and citation network.
+Secondly, we will apply subjective model to other social media analysis task such as connection prediction and friend recommendation.
+\bibliographystyle{abbrv}
+\bibliography{resonate_tweet}
+\end{document}
