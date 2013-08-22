@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  22 AUG 2013 10:54
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  22 AUG 2013 16:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -679,36 +679,36 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 LaTeX Warning: No \author given.
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 39.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 48.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 47.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Overfull \hbox (10.21939pt too wide) in paragraph at lines 96--96
+Overfull \hbox (10.21939pt too wide) in paragraph at lines 93--93
 []\secfnt RELATED WORK []PLEASE CHANGE ALL
  []
 
 [2] [3]
-Overfull \hbox (3.34479pt too wide) in paragraph at lines 186--188
+Overfull \hbox (3.34479pt too wide) in paragraph at lines 183--185
 [][]\T1/ptm/m/it/9 There is
  []
 
 [4] <LDA.pdf, id=27, 753.81625pt x 284.06125pt>
 File: LDA.pdf Graphic file (type pdf)
  <use LDA.pdf>
-Package pdftex.def Info: LDA.pdf used on input line 259.
+Package pdftex.def Info: LDA.pdf used on input line 256.
 (pdftex.def)             Requested size: 216.80676pt x 86.72307pt.
 
-Overfull \hbox (4.94806pt too wide) in paragraph at lines 323--324
+Overfull \hbox (4.94806pt too wide) in paragraph at lines 320--321
 \T1/ptm/m/n/9 dis-tri-bu-tion of his top-ics in the Lo-cal Topic Space $\OML/cm
 m/m/it/9 T$\T1/ptm/m/n/9 . $\OML/cmm/m/it/9 p []$
  []
 
 
-Overfull \hbox (12.95792pt too wide) in paragraph at lines 323--324
+Overfull \hbox (12.95792pt too wide) in paragraph at lines 320--321
 \T1/ptm/m/n/9 Top-ics of in-ter-est could be de-fined as $\OML/cmm/m/it/9 Z[] \
 OT1/cmr/m/n/9 = []$\T1/ptm/m/n/9 .
  []
@@ -716,42 +716,42 @@ OT1/cmr/m/n/9 = []$\T1/ptm/m/n/9 .
 [5 <./LDA.pdf>] <dataset.pdf, id=52, 626.34pt x 398.48875pt>
 File: dataset.pdf Graphic file (type pdf)
  <use dataset.pdf>
-Package pdftex.def Info: dataset.pdf used on input line 430.
+Package pdftex.def Info: dataset.pdf used on input line 427.
 (pdftex.def)             Requested size: 252.93996pt x 151.76779pt.
 
-Overfull \hbox (12.93996pt too wide) in paragraph at lines 430--432
+Overfull \hbox (12.93996pt too wide) in paragraph at lines 427--429
  [][] 
  []
 
 <tweets10.pdf, id=53, 910.40125pt x 597.23125pt>
 File: tweets10.pdf Graphic file (type pdf)
  <use tweets10.pdf>
-Package pdftex.def Info: tweets10.pdf used on input line 446.
+Package pdftex.def Info: tweets10.pdf used on input line 443.
 (pdftex.def)             Requested size: 505.88991pt x 289.08269pt.
 
-Overfull \hbox (1.88991pt too wide) in paragraph at lines 446--448
+Overfull \hbox (1.88991pt too wide) in paragraph at lines 443--445
  [][] 
  []
 
 <text_cloud.pdf, id=54, 794.97pt x 614.295pt>
 File: text_cloud.pdf Graphic file (type pdf)
  <use text_cloud.pdf>
-Package pdftex.def Info: text_cloud.pdf used on input line 459.
+Package pdftex.def Info: text_cloud.pdf used on input line 456.
 (pdftex.def)             Requested size: 252.93997pt x 158.99118pt.
 
-Overfull \hbox (12.93997pt too wide) in paragraph at lines 459--461
+Overfull \hbox (12.93997pt too wide) in paragraph at lines 456--458
  [][] 
  []
 
 [6 <./dataset.pdf>]
-Overfull \hbox (6.21962pt too wide) in paragraph at lines 485--486
+Overfull \hbox (6.21962pt too wide) in paragraph at lines 482--483
 []\T1/ptm/b/n/9 OPF\T1/ptm/m/n/9 : \T1/ptm/b/n/9 O\T1/ptm/m/n/9 pinion sim-i-la
 r-ity be-tween \T1/ptm/b/n/9 P\T1/ptm/m/n/9 ublisher and each \T1/ptm/b/n/9 F\T
 1/ptm/m/n/9 ollower
  []
 
 
-Overfull \hbox (11.85349pt too wide) in paragraph at lines 486--487
+Overfull \hbox (11.85349pt too wide) in paragraph at lines 483--484
 []\T1/ptm/b/n/9 SPF\T1/ptm/m/n/9 : \T1/ptm/b/n/9 S\T1/ptm/m/n/9 ubjective sim-i
 -lar-ity be-tween \T1/ptm/b/n/9 P\T1/ptm/m/n/9 ublisher and each \T1/ptm/b/n/9 
 F\T1/ptm/m/n/9 ollower
@@ -764,20 +764,20 @@ with page group included in a single page
 >] <component.pdf, id=105, 541.02126pt x 426.59375pt>
 File: component.pdf Graphic file (type pdf)
  <use component.pdf>
-Package pdftex.def Info: component.pdf used on input line 494.
+Package pdftex.def Info: component.pdf used on input line 491.
 (pdftex.def)             Requested size: 252.94266pt x 158.99586pt.
 
-Overfull \hbox (12.94266pt too wide) in paragraph at lines 494--496
+Overfull \hbox (12.94266pt too wide) in paragraph at lines 491--493
  [][] 
  []
 
 <comparison.pdf, id=106, 511.9125pt x 284.06125pt>
 File: comparison.pdf Graphic file (type pdf)
  <use comparison.pdf>
-Package pdftex.def Info: comparison.pdf used on input line 539.
+Package pdftex.def Info: comparison.pdf used on input line 536.
 (pdftex.def)             Requested size: 252.94052pt x 158.99951pt.
 
-Overfull \hbox (12.94052pt too wide) in paragraph at lines 539--541
+Overfull \hbox (12.94052pt too wide) in paragraph at lines 536--538
  [][] 
  []
 
@@ -786,7 +786,7 @@ Overfull \hbox (12.94052pt too wide) in paragraph at lines 539--541
 pdfTeX warning: pdflatex (file ./comparison.pdf): PDF inclusion: multiple pdfs 
 with page group included in a single page
 >]
-Overfull \hbox (5.22942pt too wide) in paragraph at lines 561--590
+Overfull \hbox (5.22942pt too wide) in paragraph at lines 558--587
 \T1/ptm/m/n/9 SM6) out-per-form the base-line sig-nif-i-cantly. But the pre-dic
 -tion model
  []
@@ -812,7 +812,7 @@ Here is how much of TeX's memory you used:
  7327 multiletter control sequences out of 15000+200000
  56791 words of font info for 64 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,18n,26p,1123b,255s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,18n,26p,819b,255s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-d
@@ -827,7 +827,7 @@ exlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on resonate_retweet_wsdm.pdf (11 pages, 604617 bytes).
+Output written on resonate_retweet_wsdm.pdf (11 pages, 604520 bytes).
 PDF statistics:
  182 PDF objects out of 1000 (max. 8388607)
  111 compressed objects within 2 object streams

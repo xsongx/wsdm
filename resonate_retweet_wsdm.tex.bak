@@ -14,7 +14,7 @@
 \newtheorem{hypothesis}{hypothesis}
 \newtheorem{theorem}{Theorem}
 \setlength\parindent{0pt}
-
+%\usepackage{hyperref}
 \usepackage{color}
 \newcommand{\mo}[1]{\textcolor{red}{#1}}
 
@@ -27,48 +27,45 @@
 \maketitle
 %\mo{retweet is a text and retweeting is an action. Most "retweet" in this paper need replace by "retweeting".}
 \begin{abstract}
-Retweet is the core mechanism of information diffusion on Twitter, and many factors have been proved to influence retweet behavior, however few studies have investigated the subjective aspect of a user to retweet a message. Subjective nature of human is the underlying motivation of diverse social behaviors including information diffusion, and subjective resonation triggered by topic and opinion similarity between tweets and users will elicit retweeting behaviors.
-%\mo{(The motivation is too weak!!)}
-In this paper, in the light of psychological theory, we put forward that a tweet is more likely to be retweeted by a user because of similar subjectivity, and propose a subjective model to combine both the topics and opinions to model subjectivity of users and tweets. Technically, We use the state-of-the-art Latent Dirichlet Allocation topic model to find the topics users are talking about, and sentiment analysis techniques to determine user's opinions towards these topics from user-generated content simultaneously. 
-We evaluate our model in the retweet analysis problem to verify its influence on retweet behavior and effectiveness in the retweet prediction performance. \mo{(you should  give more details about ur approach and experimental result)}
+Retweet is the core mechanism of information diffusion on Twitter, and many factors have been proved to influence retweet behavior, however few studies have investigated the subjective aspect of a user to retweet a message. 
+Subjective nature of human is the underlying motivation of diverse social behaviors including information diffusion, and subjective resonation triggered by topic and opinion similarity between tweets and users will elicit retweeting behaviors.
+In this paper, in the light of psychological theory, we put forward that a tweet is more likely to be retweeted by a user because of similar subjectivity, and propose a subjective model to combine both the topics and opinions to model subjectivity of users and tweets. 
+With state-of-the-art topic model and sentiment analysis techniques, we establish subjective model by finding topics and determining opinions towards these topics from user-generated content simultaneously.
+We evaluate our model in the retweet analysis problem to verify its influence on retweet behavior and effectiveness in the retweet prediction performance. 
+Specifically, we demonstrate that subjective similarity is the most distinguishable factor with largest difference between retweeted and unretweeted users;
+subjective model outperforms other models( entity-based, hashtag-based models, etc) in predicting rewteeting behavior; 
+and features derived from subjective model gives the most significant improvement over a off-the-shelf predicting model considering network context and meta factors of users and tweets in a rewteeting classification framework.
 \end{abstract}
-
-% A category with the (minimum) three required fields
 \category{H.4}{Information Systems Applications}{Miscellaneous}
-%A category including the fourth, optional field follows...
 \category{H.3.3}{Information Search and Retrieval}{Information filtering}[performance measures]
-
 \terms{Model, Experimentation}
-
-\keywords{Twitter, subjectivity, retweet, LDA, sentiment analysis} % NOT required for Proceedings
+\keywords{Twitter, subjectivity, retweet, LDA, sentiment analysis} 
 
 \section{Introduction}
 \label{introduction}
 Twitter is well-known for its freedom of publishing short message (i.e. tweet) within a limited length of 140 characters, and viral spreading of information across complex social networks.
 Since launched in March 2006, the service rapidly has gained worldwide popularity, with over 500 million registered users at the end of year 2012, who generated over 340 million tweets per day\footnote{\url{http://en.wikipedia.org/wiki/Twitter}}.
 In addition to large amounts of user-generated content, Twitter provides its social network functions for connection, communication and information diffusion by allowing users to message one another directly and follow one another publicly. 
-The complex networks and large content volume of Twitter provide researchers with insights into people’s social behavior on a scale that has never been possible \cite{DBLP:conf/hicss/StieglitzD12}.
+The complex networks and large content volume of Twitter provide researchers with insights into people’s social behaviors on a scale that has never been possible \cite{DBLP:conf/hicss/StieglitzD12}.
 
-Information diffusion is a lasting research for social scientists who might want to study the problem on Twitter because an established convention of Twitter facilitates information diffusion \mo{(I can not understand this 	
-sentence)}. 
-Despite the restricted length of tweets, retweet convention and complex networks of Twitter provide an unprecedented mechanism for the spread of information \cite{Jenders:2013APV}. 
+Information diffusion is a lasting research problem for social scientists who might want to study the problem on Twitter in that, retweeting convention and complex networks of Twitter provide an unprecedented mechanism for the spread of information despite the restricted length of tweets \cite{Jenders:2013APV}. 
 Actually almost a quarter of the tweets published by users are retweeted from others \cite{conf/cikm/YangGCTLZS10}. 
-Therefore, it is important to understand how retweet works which can help study information diffusion on Twitter. 
+Therefore, it is important to understand how retweeting behavior works which can help study information diffusion on Twitter. 
 
-
-Although several studies on retweeting have concentrated on analyzing retweet habits and influencing factors \cite{Boyd2010,Kwak:2010TSN,Suh2010}, most of them are generic, not user oriented.
-From the point of a user, retweet is a process that includes reading the tweet, estimating the worth of content and deciding to share. The crucial part of this process is estimating the worth that a message containing information interested to the user.
+Although several studies on retweeting have concentrated on analyzing retweeting habits and influencing factors \cite{Boyd2010,Kwak:2010TSN,Suh2010}, most of them are generic, not user oriented.
+From the point of a user, retweeting is a process that includes reading the tweet, estimating the content and deciding to share, and the crucial part of this process is to estimate whether a tweet contains information interested to the user who might find it worthy to be shared.
 %From the point of a user, the process of retweeting includes reading the tweet, deciding whether it is worthwhile to share and acting on it, hence retweet behavior indicates that the user considers the tweet containing information interesting to him.
-Therefore modeling the interest of users provides an important perspective for retweet behavior analysis. 
+Therefore modeling the interests of users provides an important perspective for retweet behavior analysis. 
 %In this study we focus specifically on how information spreads on Twitter by exploring underlying reasons that a user retweets a particular tweet out of the overwhelming message flow 
-In this study we focus specifically on how information spreads on Twitter by exploring the retweet behaviors of users.
-\mo{(moved this sentence into this passage which gives the motivation of your work.)}. 
+In this study we focus specifically on how information spreads on Twitter by exploring the retweet behaviors of users from the user modeling perspective.
+%\mo{(moved this sentence into this passage which gives the motivation of your work.)}. 
 
-Previous studies on the retweet behaviors of users have shown that an enriched user model gives coherent and consistent explanation for retweet behavior \cite{Abel:2011AUM,conf/icwsm/MacskassyM11,conf/wsdm/FengW13}  \mo{(I can not understand this 	
-sentence)}. Specifically, researchers have tried to model users from four types of information:
+Previous studies on retweeting behavior have shown that an enriched user model gives coherent and consistent explanation for retweeting motivation\cite{Abel:2011AUM,conf/icwsm/MacskassyM11,conf/wsdm/FengW13}. 
+Specifically, researchers have tried to model users from four types of information:
 profile features ("\textbf{Who you are}"), tweeting behavior ("\textbf{How you tweet}"), linguistic content ("\textbf{What you tweet}") and social network ("\textbf{Who you tweet}") \cite{Pennacchiotti:icwsm11}. 
-Despite demographic profile, tweeting habits and network connections might determine source and scope of information users could be exposed to, topics of interest of users encapsulated in rich linguistic content have been proved consistently valuable for retweet behavior explanation \cite{conf/icwsm/MacskassyM11}. Moreover,
-Petrovic \emph{et al.}~\cite{Osborne_Lavrenko_2011} and Hong \emph{et al.}~\cite{ericmedvet:hong2011} found whether a tweet will be propagated is largely about identifying the topics of interest \mo{(Here you should give a text and citation of previous work about the topic affecting retweet. \textbf{By the way, if the citation is the part of a sentence, you must cite the paper as my way, please change all the citations!!!})}. However, beyond merely news and events (related to the topic), Twitter has become a platform where large amounts of opinions are presented and exchanged by the users. Existing research demonstrated that user-generated content with rich sentiment information can trigger more attention, feedback or participation \cite{DBLP:conf/hicss/StieglitzD12}, and tweets with high emotional diversity have a better chance of being retweeted \cite{conf/icwsm/PfitznerGS12}. Therefore, although users consume thousands of tweets about different topics every day, the tweet whether will be retweeted might depends on the subjective choice of users. 
+Despite demographic profile, tweeting habits and network structure might determine source and scope of information users could be exposed to, topics of interest encapsulated in rich linguistic content have been proved consistently dependable for retweeting behavior explanation. 
+For example, Petrovic \emph{et al.}~\cite{Osborne_Lavrenko_2011} and Hong \emph{et al.}~\cite{ericmedvet:hong2011} found whether a tweet will be propagated largely depends on its identification with the topics of interest of users. 
+However, beyond merely news and events (related to the topic), Twitter has become a platform where large amounts of opinions are presented and exchanged by the users. Existing research demonstrated that user-generated content with rich sentiment information can trigger more attention, feedback or participation \cite{DBLP:conf/hicss/StieglitzD12}, and tweets with high emotional diversity have a better chance of being retweeted \cite{conf/icwsm/PfitznerGS12}. Therefore, although users consume thousands of tweets about different topics every day, the tweet whether will be retweeted might depends on the subjective choice of users. 
 
 Philosophically, subjective initiative nature of human determines that the pattern of behavior is subjectivity driven.
 Psychological researchers have identified subjectivity as the underlying factor that influence the decision-making about taking what activities to process incoming stimul \cite{Moore2008}.
