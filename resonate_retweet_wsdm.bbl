@@ -67,6 +67,12 @@ J.~Hannon, M.~Bennett, and B.~Smyth.
 \newblock In {\em Proceedings of the fourth ACM conference on Recommender
   systems}, RecSys '10, pages 199--206, New York, NY, USA, 2010. ACM.
 
+\bibitem{ericmedvet:hong2011}
+L.~Hong, O.~Dan, and B.~D. Davison.
+\newblock {Predicting popular messages in Twitter}.
+\newblock In {\em Proceedings of the 20th international conference companion on
+  World wide web}, WWW '11, pages 57--58, New York, NY, USA, 2011. ACM.
+
 \bibitem{Hu:2013www}
 X.~Hu, J.~Tang, H.~Gao, and H.~Liu.
 \newblock Unsupervised sentiment analysis with emotional signals.
@@ -146,11 +152,6 @@ N.~Naveed, T.~Gottron, J.~Kunegis, and A.~C. Alhadi.
   Information and knowledge management}, CIKM '11, pages 183--188, New York,
   NY, USA, 2011. ACM.
 
-\bibitem{Osborne_Lavrenko_2011}
-M.~Osborne and V.~Lavrenko.
-\newblock {RT to Win! Predicting Message Propagation in Twitter}.
-\newblock {\em Artificial Intelligence}, pages 586--589, 2011.
-
 \bibitem{scikit-learn}
 F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
   M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
@@ -163,6 +164,11 @@ M.~Pennacchiotti and A.-M. Popescu.
 \newblock {A Machine Learning Approach to Twitter User Classification}.
 \newblock In {\em International AAAI Conference on Weblogs and Social Media},
   2011.
+
+\bibitem{Osborne_Lavrenko_2011}
+S.~Petrovic, M.~Osborne, and V.~Lavrenko.
+\newblock Rt to win! predicting message propagation in twitter.
+\newblock In {\em ICWSM}, 2011.
 
 \bibitem{conf/icwsm/PfitznerGS12}
 R.~Pfitzner, A.~Garas, and F.~Schweitzer.

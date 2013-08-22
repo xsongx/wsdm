@@ -18,45 +18,45 @@ Warning--I didn't find a database entry for "conf/cikm/2010"
 Warning--I didn't find a database entry for "conf/icwsm/2012"
 Warning--I didn't find a database entry for "conf/wsdm/2013"
 Warning--I didn't find a database entry for "conf/icwsm/2011"
-You've used 38 entries,
+You've used 39 entries,
             2118 wiz_defined-function locations,
-            777 strings with 13082 characters,
-and the built_in function-call counts, 17480 in all, are:
-= -- 1785
-> -- 875
+            781 strings with 13269 characters,
+and the built_in function-call counts, 17820 in all, are:
+= -- 1814
+> -- 898
 < -- 24
-+ -- 335
-- -- 297
-* -- 1235
-:= -- 2727
-add.period$ -- 139
-call.type$ -- 38
-change.case$ -- 250
++ -- 344
+- -- 305
+* -- 1260
+:= -- 2786
+add.period$ -- 143
+call.type$ -- 39
+change.case$ -- 257
 chr.to.int$ -- 0
-cite$ -- 38
-duplicate$ -- 702
-empty$ -- 1302
-format.name$ -- 297
-if$ -- 3848
+cite$ -- 39
+duplicate$ -- 717
+empty$ -- 1334
+format.name$ -- 305
+if$ -- 3921
 int.to.chr$ -- 0
-int.to.str$ -- 38
-missing$ -- 40
-newline$ -- 194
-num.names$ -- 86
-pop$ -- 274
+int.to.str$ -- 39
+missing$ -- 41
+newline$ -- 199
+num.names$ -- 88
+pop$ -- 285
 preamble$ -- 1
-purify$ -- 214
+purify$ -- 220
 quote$ -- 0
-skip$ -- 534
+skip$ -- 537
 stack$ -- 0
-substring$ -- 1112
+substring$ -- 1109
 swap$ -- 249
 text.length$ -- 24
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 148
+type$ -- 152
 warning$ -- 0
-while$ -- 161
-width$ -- 40
-write$ -- 473
+while$ -- 163
+width$ -- 41
+write$ -- 486
 (There were 5 error messages)
