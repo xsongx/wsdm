@@ -89,73 +89,71 @@ The rest of the paper is organized as follows: section 2 gives related work to o
 \label{relatedwork}
 In this section, we give an introduction to three lines of relevant research work: $ 1) $ retweet behavior analysis, $ 2) $ user profile and user modelling, and $  3)$ sentiment analysis. 
 \subsection{Retweet behavior analysis}
-A large body of studies have analyzed characteristics of retweet, examining factors that lead to increased retweetability and designing models to estimate the probability of being retweeted. 
+A large body of studies have analyzed characteristics of retweeting, examining factors that lead to increased retweetability and designing models to estimate the probability of being retweeted. 
 
-As for factors influencing retweetability, \cite{Suh2010} found that tweets with URLs and hashtags were more likely to be retweeted, and there was a strong linear relationship between the number of followers and the likelihood that the tweet be retweeted. 
-\cite{conf/icwsm/MacskassyM11} studied a set of Twitter users over a period of a month and sought to explain the individual retweet behaviors.
-They found that models derived from tweets content could explain most of retweet behaviors.
-\cite{Comarela:2012UFA} found previous response to the tweeter, the tweeters’ sending rate, the freshness of information, the length of tweet could affect followers’ response to retweet. 
-\cite{Starbird:2012RRI} addressed specifically the retweet mechanism during crises. 
-They found that tweets with topical keywords were more likely to be retweeted. 
+As for factors influencing retweetability, Suh \emph{et al.}~\cite{Suh2010} found that tweets with URLs and hashtags were more likely to be retweeted, and there was a strong linear relationship between the number of followers and the likelihood that the tweet be retweeted. 
+Macskassy and Michelson~\cite{conf/icwsm/MacskassyM11} studied a set of Twitter users over a period of a month found that models derived from tweets content could explain most of retweeting behaviors.
+Comarela \emph{et al.}~\cite{Comarela:2012UFA} found previous response to the tweeter, the tweeters’ sending rate, the freshness of information, the length of tweet could affect followers’ response to retweet. 
+Starbird and Palen~\cite{Starbird:2012RRI} addressed specifically the retweeting mechanism during crises and found that tweets with topical keywords were more likely to be retweeted. 
 
-There were also work extending the analysis to build retweet prediction model. 
-\cite{conf/cikm/YangGCTLZS10} designed features from factors that influence the retweet behavior and built a semi-supervised framework on a factor graph model to predict users’ retweet behaviors. 
-\cite{Osborne_Lavrenko_2011} introduced features such as novelty of a tweet and the number of times the author is listed to train a model with a passive aggressive algorithm. 
-They found the dominance of social features, while tweet features added a substantial boost to the performance.
-\cite{Jenders:2013APV} analyzed the "obvious" and "latent" features from structural, content-based, and sentimental aspects of both tweet and users, with respect to their impact on the spread of tweets. 
+There were also many works extending the analysis to build retweeting prediction model. 
+Osborne and Lavrenko~\cite{Osborne_Lavrenko_2011} introduced features such as novelty of a tweet and the number of times the author is listed to train a model with a passive aggressive algorithm, and found the dominance of social features, while tweet features added a substantial boost to the performance.
+Jenders \emph{et al.}~\cite{Jenders:2013APV} analyzed the "obvious" and "latent" features from structural, content-based, and sentimental aspects of both tweets and users, with respect to their impact on the spread of tweets. 
 They found a combination of features covering all aspects was the key to high prediction quality.
-\cite{Naveed:2011SMC,2011:NaveedGKC} introduced interestingness as static quality measure to capture the static content quality of tweets, and quantified it based on such features as emoticons, sentiments and topics a tweet contains, then trained a logistic regression model to predict the probability of retweet for an individual tweet .
-\cite{conf/wsdm/FengW13} built a graph made up of users, publishers and tweets nodes with all sources of information incorporating into nodes and edges, and proposed a feature-aware factorization model to re-rank the tweets according to their probability of being retweeted.
-\cite{conf/icwsm/PfitznerGS12} proposed a new measure called emotional divergence to evaluate the retweet probability of a tweet and showed that highly emotional diverse tweets can have up to almost five times higher chances of being retweeted.
+Naveed \emph{et al.}~\cite{Naveed:2011SMC,2011:NaveedGKC} introduced interestingness as static quality measure to capture the static content quality of tweets, and quantified it based on such features as emoticons, sentiments and topics a tweet contains, then trained a logistic regression model to predict the probability of retweet for an individual tweet.
+Feng and Wang~\cite{conf/wsdm/FengW13} built a graph made up of users, publishers and tweets nodes with all sources of information incorporating into nodes and edges, and proposed a feature-aware factorization model to rerank the tweets according to their probability of being retweeted.
+Pfitzner \emph{et al.}~\cite{conf/icwsm/PfitznerGS12} proposed a new measure called emotional divergence to evaluate the retweet probability of a tweet and showed that highly emotional diverse tweets can have up to almost five times higher chances of being retweeted.
 
-From a global perspective, all papers introduced above tried to answer the question of ``Which tweets will be retweeted by anyone or not?''. 
+From a global perspective, all papers introduced above tried to answer the question of ``Whether and why a tweet will be retweeted by anyone?''. 
 But they are weak to capture ``Whether a tweet is retweetable from a user-centric perspective considering the interests and opinions of users''. 
 In this paper, we will try to answer this question by building a subjective model which can capture both the interests and opinions of users.
 
 \subsection{User profile and user modelling}
 With the popularity of social media, researchers have begun to pay close attention to the massive amount of data generated by users, and put forwards several techniques to model users on the data. These studies provide researchers with insights into user online behaviors. 
 
-\cite{Hannon:2010} proposed that Twitter users can be modeled by the tweets and the relation of Twitter social network.
-They found that the approach based on social graph could explore users who are "near" in the sense of follow relations, but failed to find users who are "distant ", on the other hands, content-based approach could find similar users based on interests extracted from the content of tweets. 
-\cite{conf/icwsm/MacskassyM11} discover user's topics of interest by leveraging Wikipedia as external knowledge to determine a common set of high-level categories that covers entities in tweets. 
-\cite{RamageEtAl:10} made use of topic models to analyze Twitter content at large scale and at the level of individual users with 4S dimensions, showing improved performance on tasks such as post filtering and user recommendation. 
+Hannon \emph{et al.}~\cite{Hannon:2010} proposed that Twitter users can be modeled by the tweets and the relation of Twitter social network.
+They found that content-based approach could find similar users who are "distant" without follow relations based on interests extracted from the content of tweets. 
+Macskassy and Michelson~\cite{conf/icwsm/MacskassyM11} discover user's topics of interest by leveraging Wikipedia as external knowledge to determine a common set of high-level categories that covers entities in tweets. 
+Ramage \emph{et al.}~\cite{RamageEtAl:10} made use of topic models to analyze Twitter content at large scale and at the level of individual users with 4S dimensions, showing improved performance on tasks such as post filtering and user recommendation. 
 These efforts about user modelling on Twitter have simply built model for each user by extracting keywords, entities, categories or latent topics from tweet content. 
 
 Some researchers argued that user behavior could easily be affected by some external factors other than user interest.
-\cite{Xu:2012MUP} proposed a mixture model which incorporated three important factors, namely breaking news, friends' time-line and user interest, to explain user posting behavior.
-\cite{Pennacchiotti:icwsm11} proposed the most comprehensive method to model Twitter user for user classification. They focused on richer feature sets such as features derived from topic models, tweet sentiment analysis and explicit follower-followed links, to exploit the user-created content. 
-Their work confirmed the value of in-depth features which reflect a deeper understanding of the Twitter user and the user network structure.
+Xu \emph{et al.}~\cite{Xu:2012MUP} proposed a mixture model which incorporated three important factors, namely breaking news, friends' timeline and user interest, to explain user posting behavior.
+Pennacchiotti and Popescu~\cite{Pennacchiotti:icwsm11} proposed a most comprehensive method to model Twitter user for user classification. They focused on richer feature sets such as features derived from topic models, tweet sentiment and explicit follower-followed links, etc.
+Their work confirmed the value of in-depth features by exploiting the user-generated content, which reflect a deeper understanding of the Twitter user and the user network structure.
 
-As introduced in Section~\ref{introduction}, previous researches have tried to model users from four types of information: profile features, tweeting behavior, linguistic content and social network. 
-Some studies perceive that the implicit features articulated in the user-generated content play an important role in user behavior analysis,  and they have proposed diverse techniques to capture such in-depth features to model user's interest. 
-Additionally, a few of work identifies the correlation between sentiment of users and their behaviors.
-But they all fail to model subjectivity of a user as a whole.
-Motivated by the observation, we firstly put forward subjective model to combine both interests and opinions to model a holistic user. \mo{Tense Error}
+As introduced in section~\ref{introduction}, previous researches have tried to model users from four types of information: profile features, tweeting behavior, linguistic content and social network. 
+Some studies perceived that the implicit features articulated in the user-generated content play an important role in user behavior analysis, and they have proposed diverse techniques to capture such in-depth features to model user's interest. 
+Additionally, a few of work identified the correlation between sentiment of users and their behaviors, but they all failed to model subjectivity of a user as a whole.
+Motivated by the observation, we firstly put forward subjective model to combine both interests and opinions to model a holistic user.
 
 \subsection{Sentiment Analysis}
 Sentiment analysis is a popular research area for many years. Previous research mainly focused on reviews or news comments. 
 %Generally, there are two major methods: rule-based approach and machine learning approach. 
-Recently, the research began to pay more and more attention in social media such as Twitter
+Recently, the research began to pay more and more attention to social media such as Twitter.
 % because of the massive user-generated content and the unique characteristics which could be incorporated into sentiment analysis. 
  
-\cite{Hu:2013www} interpreted emotional signals available in social media data for unsupervised sentiment analysis by providing a unified way to model two main categories of emotional signals: emotion indication and emotion correlation. 
-\cite{Jiang:2011TTS} focused on target-dependent Twitter sentiment classification, they proposed a method to improve target-dependent Twitter sentiment classification by taking target-dependent features and related tweets into consideration. 
-\cite{AsiaeeT:2012} presented a cascaded classifier framework for per-tweet sentiment analysis by extracting tweets about a desired target subject, separating tweets with sentiment, and setting apart positive from negative tweets.
-\cite{Hu:2013ESR} extracted sentiment relations between tweets based on social theories, and proposed a novel sociological approach to utilize sentiment relations between messages to facilitate sentiment classification and effectively handle noisy Twitter data.
-Motivated by sociological theories that humans tend to have consistently biased opinions, \cite{CalaisGuerra:2011BOT} addressed challenges of topic-based real-time sentiment analysis by proposing a novel transfer learning approach with a suitable source task of opinion holder bias prediction.
-\cite{Thelwall:2010SSS,Thelwall:2012SSD} designed SentiStrength, an algorithm for extracting sentiment strength from informal English text with human-evaluated dictionaries for words connotated with positive or negative sentiment strength, which exploited the grammar and spelling styles in typical microblogs.
+Hu \emph{et al.}~\cite{Hu:2013www} interpreted emotional signals available in social media data for unsupervised sentiment analysis by providing a unified way to model two main categories of emotional signals: emotion indication and emotion correlation. 
+Jiang \emph{et al.}~\cite{Jiang:2011TTS} focused on target-dependent Twitter sentiment classification, they proposed a method to improve target-dependent Twitter sentiment classification by taking target-dependent features and related tweets into consideration. 
+Asiaee T. \emph{et al.}~\cite{AsiaeeT:2012} presented a cascaded classifier framework for per-tweet sentiment analysis by extracting tweets about a desired target subject, separating tweets with sentiment, and setting apart positive from negative tweets.
+Hu emph{et al.}~\cite{Hu:2013ESR} extracted sentiment relations between tweets based on social theories, and proposed a novel sociological approach to utilize sentiment relations between messages to facilitate sentiment classification and effectively handle noisy Twitter data.
+Motivated by sociological theories that humans tend to have consistently biased opinions, Calais Guerra \emph{et al.}~\cite{CalaisGuerra:2011BOT} addressed challenges of topic-based real-time sentiment analysis by proposing a novel transfer learning approach with a suitable source task of opinion holder bias prediction.
+Thelwall \emph{et al.}~\cite{Thelwall:2010SSS,Thelwall:2012SSD} designed SentiStrength, an algorithm for extracting sentiment strength from informal English text by exploiting the grammar and spelling styles in typical social media text.
 In this paper, we adopt SentiStrength for sentiment analysis to build our subjective model, as a finer grain sentiment strength could give us more detailed opinion of users than binary polarized sentiment.
 
-\section{Subjective Model (\mo{This section should rewrite!!!}).}
+\section{Subjective Model}
 \label{subjectivemodel}
-In this section, we firstly give the definition of subjective model. Then we describe the method of building subjective model. Finally, we formulate the retweet analysis problem with subjective model(\mo{It is strange to use "formulate"}).
+In this section, we firstly give the definition of subjective model. Then we describe the method of building subjective model. Finally, we combine subjective model with the retweeting analysis problem to find the in-depth reason of retweeting behavior.
 \subsection{Definition}
 \label{definition}
 %Psychologically, the subjectivity of human is the underlying reason that drives his social behavior (\mo{Here gives citation.}). When a user browses a tweet in the message flow, the inner subjectivity determine his choice of retweeting, which depends on whether the topics and the opinions of the tweet could resonate with the user. If the topics and opinions of a tweet are familiar with the user's interest and attitude, the user is likely to propagate it.  (\mo{The last two sentences have the same meaning, you could delete one of them}). The core problem lies in that how to model the subjectivity of the user and the tweet (we refer subjectivity of tweet as the topics it talks about and the opinions towards these topics it holds  (\mo{You could put this sentence into abstract.})). 
 
-Subjectivity has been studied extensively by psychologists from different dimensions. These  dimensions include characterizing the personality of people based on such records as historic behaviors and remarks \cite{Engbert2007}, and linguists have defined the subjectivity of language as the speaker always shows their perspectives, attitudes and sentiments in the discourse \cite{stein2005subjectivity}.  (\mo{I can not understand}). 
-The user-generated content of social media provide massive language data that traditional collection methods can not achieve.
-Using these data, we firstly give our definition of subjective model on Twitter. Here we emphasize that our model can be used in other social media platforms as well. \mo{Saying the reason that you model the tweet and user.}. 
+Subjectivity has been extensively studied by psychologists to characterize the personality of a person based on his historic behaviors and remarks \cite{Engbert2007}. 
+Linguists define the subjectivity of language as the speakers always show their perspectives, attitudes and sentiments in their discourses \cite{stein2005subjectivity}.
+And as a free platform, social media provides users a place to express their opinions towards topics of interest to show their personal subjectivity by publishing short messages. 
+Therefore, for the term ``subjectivity'' on social media, we refer to both topics of interest and opinions towards these topics articulated in the user-generated content, so we model subjectivity not only by topics users care about, but also by ``\textbf{what they think about the topics}''.
+The user-generated content of social media have provided massive language resources to find both the topics and opinions we need to model subjectivity. 
+Here we firstly give our definition of subjective model on Twitter, while we emphasize that our model can be transfered to other social media platforms as well.
 
 \mo{Here you'd better give the definition of $U$, $T$, $O$, etc}. 
 
