@@ -14,7 +14,7 @@
 \newtheorem{hypothesis}{hypothesis}
 \newtheorem{theorem}{Theorem}
 \setlength\parindent{0pt}
-%\usepackage{hyperref}
+\usepackage[colorlinks,citecolor=blue,linkcolor=blue]{hyperref}
 \usepackage{color}
 \newcommand{\mo}[1]{\textcolor{red}{#1}}
 
@@ -27,14 +27,14 @@
 \maketitle
 %\mo{retweet is a text and retweeting is an action. Most "retweet" in this paper need replace by "retweeting".}
 \begin{abstract}
-Retweeting is the core mechanism of information diffusion on Twitter, and many factors have been proved to influence retweeting behavior, however few studies have investigated the subjective aspect of a user to retweet a message. 
-Subjective nature of human is the underlying motivation of diverse social behaviors including information diffusion, and subjective resonation triggered by topic and opinion similarity between tweets and users will elicit retweeting behaviors.
-In this paper, in the light of psychological theory, we put forward that a tweet is more likely to be retweeted by a user because of similar subjectivity, and propose a subjective model to combine both the topics and opinions to model subjectivity of users and tweets. 
+Retweeting is the core mechanism of information diffusion on Twitter, and many factors have been proved to influence retweeting behavior, however few studies have investigated the subjective motivation of a user to retweet a message. 
+Subjective nature of human is the underlying reason of diverse social behaviors including information diffusion, and subjective resonation triggered by topics and opinions similarity between tweets and users will elicit retweeting.
+In this paper, in the light of psychological theory, we assume that a tweet is more likely to be retweeted by a user because of similar subjectivity, and propose a subjective model to combine both the topics and opinions to model subjectivity. 
 With state-of-the-art topic model and sentiment analysis techniques, we establish subjective model by finding topics and determining opinions towards these topics from user-generated content simultaneously.
-We evaluate our model in the retweeting analysis problem to verify its influence on retweeting behavior and effectiveness in the retweeting prediction performance. 
-Specifically, we demonstrate that subjective similarity is the most distinguishable factor with largest difference between retweeted and unretweeted users;
-subjective model outperforms other models( entity-based, hashtag-based models, etc) in predicting rewteeting behavior; 
-and features derived from subjective model gives the most significant improvement over a off-the-shelf predicting model considering network context and meta factors of users and tweets in a rewteeting classification framework.
+We evaluate our model in the retweeting analysis problem to verify its influence on retweeting and effectiveness in the retweeting prediction performance. 
+Specifically, we demonstrate that subjective similarity is the most distinguishable feature with largest difference between retweeted and unretweeted users;
+subjective model outperforms other models in rewteeting prediction; 
+and features derived from subjective model gives the most significant improvement over a off-the-shelf predicting model in a rewteeting classification framework.
 \end{abstract}
 \category{H.4}{Information Systems Applications}{Miscellaneous}
 \category{H.3.3}{Information Search and Retrieval}{Information filtering}[performance measures]
@@ -122,7 +122,7 @@ Xu \emph{et al.}~\cite{Xu:2012MUP} proposed a mixture model which incorporated t
 Pennacchiotti and Popescu~\cite{Pennacchiotti:icwsm11} proposed a most comprehensive method to model Twitter user for user classification. They focused on richer feature sets such as features derived from topic models, tweet sentiment and explicit follower-followed links, etc.
 Their work confirmed the value of in-depth features by exploiting the user-generated content, which reflect a deeper understanding of the Twitter user and the user network structure.
 
-As introduced in section~\ref{introduction}, previous researches have tried to model users from four types of information: profile features, tweeting behavior, linguistic content and social network. 
+As introduced in Section~\ref{introduction}, previous researches have tried to model users from four types of information: profile features, tweeting behavior, linguistic content and social network. 
 Some studies perceived that the implicit features articulated in the user-generated content play an important role in user behavior analysis, and they have proposed diverse techniques to capture such in-depth features to model user's interest. 
 Additionally, a few of work identified the correlation between sentiment of users and their behaviors, but they all failed to model subjectivity of a user as a whole.
 Motivated by the observation, we firstly put forward subjective model to combine both interests and opinions to model a holistic user.
@@ -535,12 +535,12 @@ While the other one, the ``unretweeter'', has also talked about two topics (14th
 Although two followers have same interest (the 14th topic), their different opinions elicit their different decision, which verifies subjective model can help understand the retweeting behavior.
 
 \section{Conclusion}
-In this paper, we propose subjective model to analyze user retweeting behavior on Twitter. We assume that retweeting behavior should be elicited by the subjective resonation between the tweet and its followers. 
+In this paper, we propose subjective model to analyze user retweeting behavior on Twitter. We assume that retweeting should be elicited by the subjective resonation between the tweet and its followers. 
 We define subjective model formally as combination of topic distribution and opinion distribution, and we concrete subjective model leveraging statistical topic model and sentiment analysis techniques.
 We demonstrate the effectiveness of our model for retweeting analysis problem and show that subjective model is able to reach in-depth understanding of retweeting behavior. 
 
 Our future work mainly lie in two directions.
-Firstly, subjective model is established in a simple way. It is an interesting direction to establish it under the framework of generative topic-sentiment model, which has been applied in reviews and citation network.
+Firstly, subjective model is established through simple combination of topics and opinions. It is an interesting direction to establish it under the framework of generative topic-sentiment model, which has been applied in reviews and citation network.
 Secondly, we will apply subjective model to other social media analysis task such as connection prediction and friend recommendation.
 \bibliographystyle{abbrv}
 \bibliography{resonate_tweet}
