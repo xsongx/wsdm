@@ -1,21 +1,12 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.14)  25 AUG 2013 23:30
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  28 AUG 2013 00:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **resonate_retweet_wsdm.tex
 (./resonate_retweet_wsdm.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, et
-hiopic, farsi, arabic, pinyin, croatian, bulgarian, ukrainian, russian, slovak,
- czech, danish, dutch, usenglishmax, ukenglish, finnish, french, basque, ngerma
-n, german, swissgerman, ngerman-x-2012-05-30, german-x-2012-05-30, monogreek, g
-reek, ibycus, ancientgreek, hungarian, bengali, tamil, hindi, telugu, gujarati,
- sanskrit, malayalam, kannada, assamese, marathi, oriya, panjabi, italian, lati
-n, latvian, lithuanian, mongolian, mongolianlmc, nynorsk, bokmal, indonesian, e
-speranto, coptic, welsh, irish, interlingua, serbian, serbianc, slovenian, friu
-lan, romansh, estonian, romanian, armenian, uppersorbian, turkish, afrikaans, i
-celandic, kurmanji, polish, portuguese, galician, catalan, spanish, swedish, uk
-english, thai, loaded.
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, th
+ai, loaded.
 (./acm_proc_article-sp.cls
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -807,10 +798,13 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 
 
 ]
-Underfull \vbox (badness 7133) has occurred while \output is active []
+Overfull \hbox (7.06572pt too wide) in paragraph at lines 84--85
+\T1/ptm/m/n/9 y-sis tech-niques, we build sub-jec-tive model from user-generate
+d
+ []
 
 
-Overfull \hbox (2.0078pt too wide) in paragraph at lines 99--106
+Overfull \hbox (2.0078pt too wide) in paragraph at lines 100--107
 []\T1/ptm/m/n/9 There were also many works ex-tend-ing the anal-y-sis to build 
 retweet-
  []
@@ -819,18 +813,24 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.113 
-       [2]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.170 ...n{definition}[Subjective Model For Tweet]
-                                                   [3]
+l.114 
+       [2]
+Overfull \hbox (4.02356pt too wide) in paragraph at lines 146--147
+\T1/ptm/m/n/9 then de-scribe the method of build-ing sub-jec-tive model in the 
+retweet-
+ []
+
+
 Overfull \hbox (5.67601pt too wide) in paragraph at lines 171--172
 []\T1/ptm/m/it/9 The sub-
  []
 
-
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.172 \begin{equation}
+                       [3]
 Overfull \hbox (9.2046pt too wide) in paragraph at lines 200--201
 []\T1/ptm/m/it/9 In a lo-cal net-work con-
  []
@@ -840,13 +840,13 @@ een already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.230 
-       [4] <LDA.pdf, id=223, 753.81625pt x 284.06125pt>
+       [4] <LDA.pdf, id=224, 753.81625pt x 284.06125pt>
 File: LDA.pdf Graphic file (type pdf)
  <use LDA.pdf>
 Package pdftex.def Info: LDA.pdf used on input line 239.
 (pdftex.def)             Requested size: 216.80676pt x 86.72307pt.
 
-Overfull \hbox (7.27182pt too wide) in paragraph at lines 285--291
+Overfull \hbox (7.27182pt too wide) in paragraph at lines 286--292
 \T1/ptm/m/n/9 With sta-tis-ti-cal topic anal-y-sis and sen-ti-ment anal-y-sis d
 e-scribed above,
  []
@@ -855,54 +855,65 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.314 
-       [5 <./LDA.pdf>]
-Overfull \hbox (8.31375pt too wide) in paragraph at lines 328--328
+l.327 \end{equation}
+                     [5 <./LDA.pdf>]
+Overfull \hbox (8.31375pt too wide) in paragraph at lines 329--329
 []\secfnt Retweeting Anal-y-sis With Sub-jec-tive Model 
  []
 
-<dataset.pdf, id=269, 626.34pt x 398.48875pt>
+
+Overfull \hbox (3.71754pt too wide) in paragraph at lines 331--335
+\T1/ptm/m/n/9 by in-ves-ti-gat-ing the re-la-tion-ship among sub-jec-tive mod-e
+ls of a tweet,
+ []
+
+<dataset.pdf, id=268, 626.34pt x 398.48875pt>
 File: dataset.pdf Graphic file (type pdf)
  <use dataset.pdf>
-Package pdftex.def Info: dataset.pdf used on input line 388.
+Package pdftex.def Info: dataset.pdf used on input line 389.
 (pdftex.def)             Requested size: 252.93996pt x 151.76779pt.
 
-Overfull \hbox (12.93996pt too wide) in paragraph at lines 388--390
+Overfull \hbox (12.93996pt too wide) in paragraph at lines 389--391
  [][] 
  []
 
 
-Overfull \hbox (8.26086pt too wide) in paragraph at lines 367--394
+Overfull \hbox (8.26086pt too wide) in paragraph at lines 368--395
 \T1/ptm/m/n/9 which was cre-ated us-ing Twit-ter API[][][][][] with post-ing ti
 me from Septem-
  []
 
 
-Overfull \hbox (6.21962pt too wide) in paragraph at lines 404--405
+Overfull \hbox (1.05403pt too wide) in paragraph at lines 396--396
+[]\secfnt The Ef-fect of Sub-jec-tive Model on Retweet 
+ []
+
+
+Overfull \hbox (6.21962pt too wide) in paragraph at lines 405--406
 []\T1/ptm/b/n/9 OPF\T1/ptm/m/n/9 : \T1/ptm/b/n/9 O\T1/ptm/m/n/9 pinion sim-i-la
 r-ity be-tween \T1/ptm/b/n/9 P\T1/ptm/m/n/9 ublisher and each \T1/ptm/b/n/9 F\T
 1/ptm/m/n/9 ollower
  []
 
 
-Overfull \hbox (11.85349pt too wide) in paragraph at lines 405--406
+Overfull \hbox (11.85349pt too wide) in paragraph at lines 406--407
 []\T1/ptm/b/n/9 SPF\T1/ptm/m/n/9 : \T1/ptm/b/n/9 S\T1/ptm/m/n/9 ubjective sim-i
 -lar-ity be-tween \T1/ptm/b/n/9 P\T1/ptm/m/n/9 ublisher and each \T1/ptm/b/n/9 
 F\T1/ptm/m/n/9 ollower
  []
 
-<component.pdf, id=298, 541.02126pt x 426.59375pt>
+<component.pdf, id=297, 541.02126pt x 426.59375pt>
 File: component.pdf Graphic file (type pdf)
  <use component.pdf>
-Package pdftex.def Info: component.pdf used on input line 411.
+Package pdftex.def Info: component.pdf used on input line 412.
 (pdftex.def)             Requested size: 252.94266pt x 158.99586pt.
 
-Overfull \hbox (12.94266pt too wide) in paragraph at lines 411--413
+Overfull \hbox (12.94266pt too wide) in paragraph at lines 412--414
  [][] 
  []
 
 
-Overfull \hbox (1.94476pt too wide) in paragraph at lines 407--418
+Overfull \hbox (1.94476pt too wide) in paragraph at lines 408--419
 \T1/ptm/m/n/9 5214 ran-domly se-lected fol-low-ers who do not retweet any test 
 tweet.
  []
@@ -911,32 +922,32 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.418 \item
-            TTF score shows that a tweet is more likely to be retweeted by f...
+l.420 \item O
+             TF score shows that opinions in a tweet is an important indicat...
 [6 <./dataset.pdf>]
-Overfull \hbox (1.25201pt too wide) in paragraph at lines 420--421
+Overfull \hbox (1.25201pt too wide) in paragraph at lines 421--422
 \T1/ptm/m/n/9 fer-ence be-tween retweet-ers and other fol-low-ers, which proves
 
  []
 
 
-Overfull \hbox (8.21799pt too wide) in paragraph at lines 423--424
+Overfull \hbox (8.21799pt too wide) in paragraph at lines 424--425
 \T1/ptm/m/n/9 ing, and we call this phe-nomenon ``tight ho-mophily'' of retweet
 -
  []
 
-<comparison.pdf, id=336, 511.9125pt x 284.06125pt>
+<comparison.pdf, id=335, 511.9125pt x 284.06125pt>
 File: comparison.pdf Graphic file (type pdf)
  <use comparison.pdf>
-Package pdftex.def Info: comparison.pdf used on input line 453.
+Package pdftex.def Info: comparison.pdf used on input line 454.
 (pdftex.def)             Requested size: 252.94052pt x 158.99951pt.
 
-Overfull \hbox (12.94052pt too wide) in paragraph at lines 453--455
+Overfull \hbox (12.94052pt too wide) in paragraph at lines 454--456
  [][] 
  []
 
 
-Overfull \hbox (3.87961pt too wide) in paragraph at lines 460--465
+Overfull \hbox (3.87961pt too wide) in paragraph at lines 461--466
 \T1/ptm/m/n/9 lar-ity be-tween Tweet and Fol-low-ers, 63.88%) model and OPF (Op
 in-
  []
@@ -945,105 +956,108 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.465 
-       [7 <./component.pdf> <./comparison.pdf
+l.467 ...ion{Retweeting Classification Evaluation}
+                                                   [7 <./component.pdf> <./comp
+arison.pdf
 
 pdfTeX warning: pdflatex (file ./comparison.pdf): PDF inclusion: multiple pdfs 
 with page group included in a single page
 >]
-Overfull \hbox (4.71707pt too wide) in paragraph at lines 496--505
+Overfull \hbox (4.71707pt too wide) in paragraph at lines 497--506
 []\T1/ptm/m/n/9 The ac-cu-racy of base-line is 60.85%, and two pre-dic-tion mod
 -els(LUO
  []
 
-<tweets10.pdf, id=368, 910.40125pt x 597.23125pt>
+
+Underfull \vbox (badness 5203) has occurred while \output is active []
+
+
+<tweets10.pdf, id=366, 910.40125pt x 597.23125pt>
 File: tweets10.pdf Graphic file (type pdf)
  <use tweets10.pdf>
-Package pdftex.def Info: tweets10.pdf used on input line 515.
+Package pdftex.def Info: tweets10.pdf used on input line 516.
 (pdftex.def)             Requested size: 505.88991pt x 289.08269pt.
 
-Overfull \hbox (1.88991pt too wide) in paragraph at lines 515--517
+Overfull \hbox (1.88991pt too wide) in paragraph at lines 516--518
  [][] 
  []
 
-<text_cloud.pdf, id=372, 794.97pt x 614.295pt>
+<text_cloud.pdf, id=370, 794.97pt x 614.295pt>
 File: text_cloud.pdf Graphic file (type pdf)
  <use text_cloud.pdf>
-Package pdftex.def Info: text_cloud.pdf used on input line 524.
+Package pdftex.def Info: text_cloud.pdf used on input line 525.
 (pdftex.def)             Requested size: 252.93997pt x 158.99118pt.
 
-Overfull \hbox (12.93997pt too wide) in paragraph at lines 524--526
+Overfull \hbox (12.93997pt too wide) in paragraph at lines 525--527
  [][] 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.541 
-       [8 <./text_cloud.pdf>] (./resonate_retweet_wsdm.bbl
-Overfull \hbox (1.88148pt too wide) in paragraph at lines 542--1
+(./resonate_retweet_wsdm.bbl
+Overfull \hbox (1.88148pt too wide) in paragraph at lines 543--1
 \T1/ptm/m/n/9 model is es-tab-lished through sim-ple com-bi-na-tion of top-ics 
 and opin-
  []
 
-
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1 \begin{thebibliography}{10}
+                                [8 <./text_cloud.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.75 
-      [9 <./tweets10.pdf>]
+l.84 \bibitem{Hu:2013ESR}
+                          [9 <./tweets10.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 547.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 548.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.547 \end{document}
+l.548 \end{document}
                      [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 547.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 548.
  (./resonate_retweet_wsdm.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 547.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 547.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 548.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 548.
 Package rerunfilecheck Info: File `resonate_retweet_wsdm.out' has not changed.
-(rerunfilecheck)             Checksum: E010B6A6129488DD898BD5829D006428;1563.
+(rerunfilecheck)             Checksum: B084D9AC1BB628408AFB7D536931009E;1541.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 547.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 548.
  ) 
 Here is how much of TeX's memory you used:
- 7712 strings out of 493473
- 104392 string characters out of 3143122
- 214712 words of memory out of 3000000
- 10750 multiletter control sequences out of 15000+200000
+ 7712 strings out of 495049
+ 104392 string characters out of 3181741
+ 212399 words of memory out of 3000000
+ 10629 multiletter control sequences out of 15000+200000
  56791 words of font info for 64 fonts, out of 3000000 for 9000
- 965 hyphenation exceptions out of 8191
- 41i,18n,29p,837b,445s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 14 hyphenation exceptions out of 8191
+ 41i,18n,29p,837b,443s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf
--dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
-mri8a.pfb>
-Output written on resonate_retweet_wsdm.pdf (10 pages, 612822 bytes).
+1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on resonate_retweet_wsdm.pdf (10 pages, 594850 bytes).
 PDF statistics:
- 490 PDF objects out of 1000 (max. 8388607)
- 400 compressed objects within 4 object streams
+ 482 PDF objects out of 1000 (max. 8388607)
+ 394 compressed objects within 4 object streams
  93 named destinations out of 1000 (max. 500000)
  207 words of extra memory for PDF output out of 10000 (max. 10000000)
 

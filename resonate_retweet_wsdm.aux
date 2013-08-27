@@ -45,7 +45,8 @@
 \citation{conf/icwsm/PfitznerGS12}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{\thepage }{section.2}}
 \newlabel{relatedwork}{{2}{\thepage }{Related Work\relax }{section.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Retweet behavior analysis}{\thepage }{subsection.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Retweeting analysis}{\thepage }{subsection.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}User modelling}{\thepage }{subsection.2.2}}
 \citation{Hannon:2010}
 \citation{conf/icwsm/MacskassyM11}
 \citation{RamageEtAl:10}
@@ -60,7 +61,6 @@
 \citation{Thelwall:2012SSD}
 \citation{Engbert2007}
 \citation{stein2005subjectivity}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}User profile and user modelling}{\thepage }{subsection.2.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Sentiment Analysis}{\thepage }{subsection.2.3}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Subjective Model}{\thepage }{section.3}}
 \newlabel{subjectivemodel}{{3}{\thepage }{Subjective Model\relax }{section.3}{}}
@@ -103,8 +103,10 @@
 \newlabel{opinionall}{{4}{\thepage }{Concrete Subjective Model\relax }{equation.3.4}{}}
 \newlabel{opinion1}{{5}{\thepage }{Concrete Subjective Model\relax }{equation.3.5}{}}
 \newlabel{opinion2}{{6}{\thepage }{Concrete Subjective Model\relax }{equation.3.6}{}}
-\citation{Luo:2013RMF}
 \newlabel{subuser}{{7}{\thepage }{Concrete Subjective Model\relax }{equation.3.7}{}}
+\citation{Luo:2013RMF}
+\citation{conf/icwsm/MacskassyM11}
+\citation{conf/wsdm/FengW13}
 \newlabel{subtweet}{{8}{\thepage }{Concrete Subjective Model\relax }{equation.3.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Retweeting Analysis With Subjective Model}{\thepage }{subsection.3.4}}
 \newlabel{formulation}{{3.4}{\thepage }{Retweeting Analysis With Subjective Model\relax }{subsection.3.4}{}}
@@ -112,15 +114,13 @@
 \newlabel{pubfollower}{{11}{\thepage }{Retweeting Analysis With Subjective Model\relax }{equation.3.11}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experiment}{\thepage }{section.4}}
 \newlabel{experiment}{{4}{\thepage }{Experiment\relax }{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Dataset}{\thepage }{subsection.4.1}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Retweet Dataset Statistics}}{\thepage }{table.1}}
 \newlabel{datasetstat}{{1}{\thepage }{Retweet Dataset Statistics\relax }{table.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Dataset}{\thepage }{subsection.4.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Illustration of dataset structure.}}{\thepage }{figure.2}}
 \newlabel{fig:graph3}{{2}{\thepage }{Illustration of dataset structure}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Influence of Subjective Model on Retweet}{\thepage }{subsection.4.2}}
-\newlabel{influence}{{4.2}{\thepage }{Influence of Subjective Model on Retweet\relax }{subsection.4.2}{}}
-\citation{conf/icwsm/MacskassyM11}
-\citation{conf/wsdm/FengW13}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The Effect of Subjective Model on Retweet}{\thepage }{subsection.4.2}}
+\newlabel{influence}{{4.2}{\thepage }{The Effect of Subjective Model on Retweet\relax }{subsection.4.2}{}}
 \citation{conf/icwsm/PfitznerGS12}
 \citation{2011:NaveedGKC}
 \citation{Luo:2013RMF}
@@ -136,6 +136,8 @@
 \newlabel{fig:graph7}{{4}{\thepage }{Comparison of different models}{figure.4}{}}
 \citation{Luo:2013RMF}
 \citation{Luo:2013RMF}
+\bibstyle{abbrv}
+\bibdata{resonate_tweet}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Prediction Accuracy of Different Models. Significant improvement over baseline with star($ \ast $) and LUO' model with dagger($ \ddagger $) (p$ < $0.05).}}{\thepage }{table.2}}
 \newlabel{table2}{{2}{\thepage }{Prediction Accuracy of Different Models. Significant improvement over baseline with star($ \ast $) and LUO' model with dagger($ \ddagger $) (p$ < $0.05)}{table.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Retweeting Classification Evaluation}{\thepage }{subsubsection.4.3.2}}
@@ -145,8 +147,6 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Word cloud of 14th topic, publisher and followers}}{\thepage }{figure.6}}
 \newlabel{fig:graph5}{{6}{\thepage }{Word cloud of 14th topic, publisher and followers\relax }{figure.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{\thepage }{section.5}}
-\bibstyle{abbrv}
-\bibdata{resonate_tweet}
 \bibcite{Abel:2011AUM}{1}
 \bibcite{AsiaeeT:2012}{2}
 \bibcite{blei2003latent}{3}
@@ -158,10 +158,10 @@
 \bibcite{conf/wsdm/FengW13}{9}
 \bibcite{Hannon:2010}{10}
 \bibcite{ericmedvet:hong2011}{11}
+\bibcite{Hu:2013www}{12}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Subjective model examples.}}{\thepage }{figure.5}}
 \newlabel{fig:graph4}{{5}{\thepage }{Subjective model examples}{figure.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}References}{\thepage }{section.6}}
-\bibcite{Hu:2013www}{12}
 \bibcite{Hu:2013ESR}{13}
 \bibcite{Hyman2000}{14}
 \bibcite{Jenders:2013APV}{15}

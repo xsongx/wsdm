@@ -1,7 +1,7 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Related Work}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Retweet behavior analysis}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{User profile and user modelling}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Retweeting analysis}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{User modelling}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{Sentiment Analysis}{section.2}% 5
 \BOOKMARK [1][-]{section.3}{Subjective Model}{}% 6
 \BOOKMARK [2][-]{subsection.3.1}{Definition}{section.3}% 7
@@ -13,7 +13,7 @@
 \BOOKMARK [2][-]{subsection.3.4}{Retweeting Analysis With Subjective Model}{section.3}% 13
 \BOOKMARK [1][-]{section.4}{Experiment}{}% 14
 \BOOKMARK [2][-]{subsection.4.1}{Dataset}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.2}{Influence of Subjective Model on Retweet}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{The Effect of Subjective Model on Retweet}{section.4}% 16
 \BOOKMARK [2][-]{subsection.4.3}{Performance of Retweeting Prediction}{section.4}% 17
 \BOOKMARK [3][-]{subsubsection.4.3.1}{Comparison With Other User Models}{subsection.4.3}% 18
 \BOOKMARK [3][-]{subsubsection.4.3.2}{Retweeting Classification Evaluation}{subsection.4.3}% 19
