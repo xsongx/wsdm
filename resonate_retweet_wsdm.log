@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  28 AUG 2013 00:20
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  28 AUG 2013 17:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -902,18 +902,18 @@ Overfull \hbox (11.85349pt too wide) in paragraph at lines 406--407
 F\T1/ptm/m/n/9 ollower
  []
 
-<component.pdf, id=297, 541.02126pt x 426.59375pt>
+<component.pdf, id=298, 541.02126pt x 426.59375pt>
 File: component.pdf Graphic file (type pdf)
  <use component.pdf>
-Package pdftex.def Info: component.pdf used on input line 412.
+Package pdftex.def Info: component.pdf used on input line 417.
 (pdftex.def)             Requested size: 252.94266pt x 158.99586pt.
 
-Overfull \hbox (12.94266pt too wide) in paragraph at lines 412--414
+Overfull \hbox (12.94266pt too wide) in paragraph at lines 417--419
  [][] 
  []
 
 
-Overfull \hbox (1.94476pt too wide) in paragraph at lines 408--419
+Overfull \hbox (1.94476pt too wide) in paragraph at lines 413--424
 \T1/ptm/m/n/9 5214 ran-domly se-lected fol-low-ers who do not retweet any test 
 tweet.
  []
@@ -922,32 +922,32 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.420 \item O
-             TF score shows that opinions in a tweet is an important indicat...
+l.424 \item
+            TTF score shows that a tweet is more likely to be retweeted by f...
 [6 <./dataset.pdf>]
-Overfull \hbox (1.25201pt too wide) in paragraph at lines 421--422
+Overfull \hbox (1.25201pt too wide) in paragraph at lines 426--427
 \T1/ptm/m/n/9 fer-ence be-tween retweet-ers and other fol-low-ers, which proves
 
  []
 
 
-Overfull \hbox (8.21799pt too wide) in paragraph at lines 424--425
+Overfull \hbox (8.21799pt too wide) in paragraph at lines 429--430
 \T1/ptm/m/n/9 ing, and we call this phe-nomenon ``tight ho-mophily'' of retweet
 -
  []
 
-<comparison.pdf, id=335, 511.9125pt x 284.06125pt>
+<comparison.pdf, id=334, 511.9125pt x 284.06125pt>
 File: comparison.pdf Graphic file (type pdf)
  <use comparison.pdf>
-Package pdftex.def Info: comparison.pdf used on input line 454.
+Package pdftex.def Info: comparison.pdf used on input line 455.
 (pdftex.def)             Requested size: 252.94052pt x 158.99951pt.
 
-Overfull \hbox (12.94052pt too wide) in paragraph at lines 454--456
+Overfull \hbox (12.94052pt too wide) in paragraph at lines 455--457
  [][] 
  []
 
 
-Overfull \hbox (3.87961pt too wide) in paragraph at lines 461--466
+Overfull \hbox (3.87961pt too wide) in paragraph at lines 462--467
 \T1/ptm/m/n/9 lar-ity be-tween Tweet and Fol-low-ers, 63.88%) model and OPF (Op
 in-
  []
@@ -956,92 +956,82 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.467 ...ion{Retweeting Classification Evaluation}
-                                                   [7 <./component.pdf> <./comp
-arison.pdf
+l.468 \subsubsection
+                    {Retweeting Classification Evaluation} [7 <./component.pdf>
+ <./comparison.pdf
 
 pdfTeX warning: pdflatex (file ./comparison.pdf): PDF inclusion: multiple pdfs 
 with page group included in a single page
->]
-Overfull \hbox (4.71707pt too wide) in paragraph at lines 497--506
-[]\T1/ptm/m/n/9 The ac-cu-racy of base-line is 60.85%, and two pre-dic-tion mod
--els(LUO
- []
-
-
-Underfull \vbox (badness 5203) has occurred while \output is active []
-
-
-<tweets10.pdf, id=366, 910.40125pt x 597.23125pt>
+>] <tweets10.pdf, id=367, 910.40125pt x 597.23125pt>
 File: tweets10.pdf Graphic file (type pdf)
  <use tweets10.pdf>
-Package pdftex.def Info: tweets10.pdf used on input line 516.
+Package pdftex.def Info: tweets10.pdf used on input line 518.
 (pdftex.def)             Requested size: 505.88991pt x 289.08269pt.
 
-Overfull \hbox (1.88991pt too wide) in paragraph at lines 516--518
+Overfull \hbox (1.88991pt too wide) in paragraph at lines 518--520
  [][] 
  []
 
-<text_cloud.pdf, id=370, 794.97pt x 614.295pt>
+<text_cloud.pdf, id=371, 794.97pt x 614.295pt>
 File: text_cloud.pdf Graphic file (type pdf)
  <use text_cloud.pdf>
-Package pdftex.def Info: text_cloud.pdf used on input line 525.
+Package pdftex.def Info: text_cloud.pdf used on input line 527.
 (pdftex.def)             Requested size: 252.93997pt x 158.99118pt.
 
-Overfull \hbox (12.93997pt too wide) in paragraph at lines 525--527
+Overfull \hbox (12.93997pt too wide) in paragraph at lines 527--529
  [][] 
  []
 
-(./resonate_retweet_wsdm.bbl
-Overfull \hbox (1.88148pt too wide) in paragraph at lines 543--1
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.544 
+       [8 <./text_cloud.pdf>] (./resonate_retweet_wsdm.bbl
+Overfull \hbox (1.88148pt too wide) in paragraph at lines 545--1
 \T1/ptm/m/n/9 model is es-tab-lished through sim-ple com-bi-na-tion of top-ics 
 and opin-
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1 \begin{thebibliography}{10}
-                                [8 <./text_cloud.pdf>]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.84 \bibitem{Hu:2013ESR}
-                          [9 <./tweets10.pdf>]
+l.75 
+      [9 <./tweets10.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 548.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 550.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.548 \end{document}
+l.550 \end{document}
                      [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 548.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 550.
  (./resonate_retweet_wsdm.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 548.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 548.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 550.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 550.
 Package rerunfilecheck Info: File `resonate_retweet_wsdm.out' has not changed.
 (rerunfilecheck)             Checksum: B084D9AC1BB628408AFB7D536931009E;1541.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 548.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 550.
  ) 
 Here is how much of TeX's memory you used:
  7712 strings out of 495049
  104392 string characters out of 3181741
- 212399 words of memory out of 3000000
+ 213399 words of memory out of 3000000
  10629 multiletter control sequences out of 15000+200000
  56791 words of font info for 64 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,18n,29p,837b,443s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,18n,29p,837b,445s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-d
@@ -1054,10 +1044,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/times/utmri8a.pfb>
-Output written on resonate_retweet_wsdm.pdf (10 pages, 594850 bytes).
+Output written on resonate_retweet_wsdm.pdf (10 pages, 595280 bytes).
 PDF statistics:
- 482 PDF objects out of 1000 (max. 8388607)
- 394 compressed objects within 4 object streams
+ 483 PDF objects out of 1000 (max. 8388607)
+ 395 compressed objects within 4 object streams
  93 named destinations out of 1000 (max. 500000)
  207 words of extra memory for PDF output out of 10000 (max. 10000000)
 
